@@ -1,0 +1,3 @@
+Bundle-Name: test-service-client
+Bundle-SymbolicName: test.service.client
+Bundle-Version: 1.0.0

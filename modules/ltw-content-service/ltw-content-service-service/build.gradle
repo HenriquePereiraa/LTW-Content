@@ -1,0 +1,11 @@
+dependencies {
+	api project(":modules:ltw-content-service:ltw-content-service-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.dxp.api"
+}
+
+buildService {
+	apiDir = "../ltw-content-service-api/src/main/java"
+}
+
+group = "ltw.content.service"

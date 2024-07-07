@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="ltw.content.service.model.LTW_content">
+		<field name="uuid" type="String" />
+		<field name="ltwId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="motorcycleName" type="String" />
+		<field name="motorcycleManufacturing" type="String" />
+		<field name="motorcycleYear" type="int" />
+	</model>
+</model-hints>

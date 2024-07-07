@@ -1,0 +1,9 @@
+apiDir: "../test-service-api/src/main/java"
+apiPackagePath: "test.service"
+application:
+    baseURI: "/test-service"
+    className: "TestServiceApplication"
+    name: "TestService"
+author: "me"
+clientDir: "../test-service-client/src/main/java"
+testDir: "../test-service-test/src/testIntegration/java"

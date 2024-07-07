@@ -1,0 +1,10 @@
+Bundle-Name: ltw-content-service-api
+Bundle-SymbolicName: ltw.content.service.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	ltw.content.service.exception,\
+	ltw.content.service.model,\
+	ltw.content.service.service,\
+	ltw.content.service.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../ltw-content-service-service/service.xml

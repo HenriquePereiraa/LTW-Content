@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.4.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_4_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="ltw.content.service">
+	<namespace>LTW</namespace>
+	<!--<entity data-source="sampleDataSource" local-service="true" name="Foo" remote-service="false" session-factory="sampleSessionFactory" table="foo" tx-manager="sampleTransactionManager uuid="true"">-->
+	<entity local-service="true" name="LTW_content" remote-service="true" uuid="true">
+
+		<!-- PK fields -->
+
+		<column name="ltwId" primary="true" type="long" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+
+		<column name="motorcycleName" type="String" />
+		<column name="motorcycleManufacturing" type="String" />
+		<column name="motorcycleYear" type="int" />
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="motorcycleYear" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="GroupId" return-type="Collection">
+			<finder-column name="groupId" />
+		</finder>
+
+		<finder name="CompanyId" return-type="Collection">
+			<finder-column name="companyId" />
+		</finder>
+
+		<finder name="UserId" return-type="Collection">
+			<finder-column name="userId" />
+		</finder>
+
+		<finder name="UserName" return-type="Collection">
+			<finder-column name="userName" />
+		</finder>
+
+		<finder name="MotorcycleName" return-type="Collection">
+			<finder-column name="motorcycleName" />
+		</finder>
+
+		<finder name="MotorcycleManufacturing" return-type="Collection">
+			<finder-column name="motorcycleManufacturing" />
+		</finder>
+
+		<finder name="MotorcycleYear" return-type="Collection">
+			<finder-column name="motorcycleYear" />
+		</finder>
+
+	</entity>
+	<exceptions>
+		<exception>SampleNameException</exception>
+		<exception>ManufacturingException</exception>
+		<exception>YearException</exception>
+	</exceptions>
+</service-builder>

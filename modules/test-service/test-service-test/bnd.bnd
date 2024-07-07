@@ -1,0 +1,5 @@
+Bundle-Name: test-service-test
+Bundle-SymbolicName: test.service.test
+Bundle-Version: 1.0.0
+-includeresource: test.service.client.jar=../test-service-client/build/libs/test.service.client-1.0.0.jar;lib:=true
+-provider-policy: ${replacestring;${range;[==,==]};.*,(.*)];$1}
