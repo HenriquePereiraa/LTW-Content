@@ -1,6 +1,0 @@
-Bundle-Name: test-service-api
-Bundle-SymbolicName: test.service.api
-Bundle-Version: 1.0.0
-Export-Package:\
-	test.service.dto.v1_0,\
-	test.service.resource.v1_0

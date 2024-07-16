@@ -1,0 +1,9 @@
+apiDir: "../ltw-content-rest-api/src/main/java"
+apiPackagePath: "ltw.content.rest"
+application:
+    baseURI: "/ltw-content-rest"
+    className: "LtwContentRestApplication"
+    name: "LtwContentRest"
+author: "Henrique Pereira"
+clientDir: "../ltw-content-rest-client/src/main/java"
+testDir: "../ltw-content-rest-test/src/testIntegration/java"

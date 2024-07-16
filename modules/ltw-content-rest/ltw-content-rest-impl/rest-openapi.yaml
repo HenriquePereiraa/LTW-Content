@@ -1,0 +1,94 @@
+components:
+    schemas:
+        LTW_content:
+            type: object
+            properties:
+                contentId:
+                    type: integer
+                    format: int64
+                motorcycleName:
+                    type: string
+                motorcycleManufacturing:
+                    type: string
+                motorcycleYear:
+                    type: integer
+                    format: int32
+                userId:
+                    type: integer
+                    format: int64
+                userName:
+                    type: string
+                createDate:
+                    type: string
+                    format: date-time
+                modifiedDate:
+                    type: string
+                    format: date-time
+            required:
+                - motorcycleName
+                - motorcycleManufacturing
+                - motorcycleYear
+info:
+    description: "LtwContentRest REST API"
+    license:
+        name: "Apache 2.0"
+        url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+    title: "LtwContentRest"
+    version: v1.0
+openapi: 3.0.1
+paths:
+    "/ltw-content/add-ltw-content":
+        post:
+            operationId: addLTW_content
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                ltw_content:
+                                    $ref: "#/components/schemas/LTW_content"
+                                motorcycleName:
+                                    type: string
+                                    description: "Name of the motorcycle"
+                                motorcycleManufacturing:
+                                    type: string
+                                    description: "Manufacturing details of the motorcycle"
+                                motorcycleYear:
+                                    type: integer
+                                    description: "Year of the motorcycle"
+                    application/xml:
+                        schema:
+                            type: object
+                            properties:
+                                ltw_content:
+                                    $ref: "#/components/schemas/LTW_content"
+                                motorcycleName:
+                                    type: string
+                                    description: "Name of the motorcycle"
+                                motorcycleManufacturing:
+                                    type: string
+                                    description: "Manufacturing details of the motorcycle"
+                                motorcycleYear:
+                                    type: integer
+                                    description: "Year of the motorcycle"
+            responses:
+                '200':
+                    description: "LTW content successfully added"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/LTW_content"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/LTW_content"
+                '400':
+                    description: "Invalid input"
+                '401':
+                    description: "Unauthorized"
+                '403':
+                    description: "Forbidden"
+                '500':
+                    description: "Internal server error"
+            tags: ["LTW_content"]
