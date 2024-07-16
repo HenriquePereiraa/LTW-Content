@@ -1,0 +1,5 @@
+Bundle-Name: ltw-content-rest-test
+Bundle-SymbolicName: ltw.content.rest.test
+Bundle-Version: 1.0.0
+-includeresource: ltw.content.rest.client.jar=../ltw-content-rest-client/build/libs/ltw.content.rest.client-1.0.0.jar;lib:=true
+-provider-policy: ${replacestring;${range;[==,==]};.*,(.*)];$1}
