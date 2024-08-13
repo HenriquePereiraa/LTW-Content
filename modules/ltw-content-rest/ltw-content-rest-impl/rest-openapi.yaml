@@ -47,8 +47,6 @@ paths:
                         schema:
                             type: object
                             properties:
-                                ltw_content:
-                                    $ref: "#/components/schemas/LTW_content"
                                 motorcycleName:
                                     type: string
                                     description: "Name of the motorcycle"
@@ -62,8 +60,6 @@ paths:
                         schema:
                             type: object
                             properties:
-                                ltw_content:
-                                    $ref: "#/components/schemas/LTW_content"
                                 motorcycleName:
                                     type: string
                                     description: "Name of the motorcycle"

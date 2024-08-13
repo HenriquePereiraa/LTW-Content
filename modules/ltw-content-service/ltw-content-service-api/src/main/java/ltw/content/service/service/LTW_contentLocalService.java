@@ -69,8 +69,7 @@ public interface LTW_contentLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public LTW_content addLTW_content(LTW_content ltw_content);
 
-	public LTW_content addLTW_content(
-		LTW_content ltw_content, String motorcycleName,
+	public LTW_content addLTW_content( String motorcycleName,
 		String motorcycleManufacturing, int motorcycleYear);
 
 	/**

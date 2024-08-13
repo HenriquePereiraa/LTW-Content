@@ -9,6 +9,7 @@ import com.liferay.portal.aop.AopService;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.model.User;
+import com.liferay.portal.kernel.service.ResourceLocalService;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.service.ServiceContextThreadLocal;
 import com.liferay.portal.kernel.service.UserLocalServiceUtil;
@@ -16,6 +17,7 @@ import ltw.content.service.model.LTW_content;
 import ltw.content.service.service.base.LTW_contentLocalServiceBaseImpl;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
 import java.util.Date;
 
@@ -30,12 +32,15 @@ public class LTW_contentLocalServiceImpl
 	extends LTW_contentLocalServiceBaseImpl {
 
 	@Override
-	public LTW_content addLTW_content(LTW_content ltw_content, String motorcycleName, String motorcycleManufacturing, int motorcycleYear) {
+	public LTW_content addLTW_content(String motorcycleName, String motorcycleManufacturing, int motorcycleYear) {
 		// Fetch the current service context
 		ServiceContext serviceContext = ServiceContextThreadLocal.getServiceContext();
 
 		// Generate a unique ID for the new content
 		long contentId = counterLocalService.increment(LTW_content.class.getName());
+
+		// Fazer um create antes de fazre um update
+		LTW_content ltw_content = ltw_contentPersistence.create(contentId);
 
 		// Set the primary key for the new content
 		ltw_content.setPrimaryKey(contentId);
@@ -56,13 +61,9 @@ public class LTW_contentLocalServiceImpl
 			ltw_content.setMotorcycleManufacturing(motorcycleManufacturing);
 			ltw_content.setMotorcycleYear(motorcycleYear);
 
+
 			// Persist the new content
 			ltw_content = ltw_contentPersistence.update(ltw_content);
-
-
-			// Notify model listeners
-			resourceLocalService.addResources(ltw_content.getCompanyId(),ltw_content.getGroupId(),ltw_content.getUserId(),
-					LTW_content.class.getName(), ltw_content.getLtwId(), false, true, true);
 
 			return ltw_content;
 
@@ -75,4 +76,7 @@ public class LTW_contentLocalServiceImpl
 	public LTW_content getLTW_content(long ltwId) throws PortalException {
 		return super.getLTW_content(ltwId);
 	}
+
+	@Reference
+	private ResourceLocalService _resourceLocalService;
 }
