@@ -7,9 +7,12 @@ package ltw.content.service.service.impl;
 
 import com.liferay.portal.aop.AopService;
 
+import ltw.content.service.model.LTW_content;
+import ltw.content.service.service.LTW_contentLocalService;
 import ltw.content.service.service.base.LTW_contentServiceBaseImpl;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
 /**
  * @author Brian Wing Shun Chan
@@ -22,4 +25,11 @@ import org.osgi.service.component.annotations.Component;
 	service = AopService.class
 )
 public class LTW_contentServiceImpl extends LTW_contentServiceBaseImpl {
+
+//	public LTW_content addLTW_content(String motorcycleName, String motorcycleManufacturing, int motorcycleYear) {
+//
+//	}
+
+	@Reference
+	LTW_contentLocalService _ltwContentLocalService;
 }

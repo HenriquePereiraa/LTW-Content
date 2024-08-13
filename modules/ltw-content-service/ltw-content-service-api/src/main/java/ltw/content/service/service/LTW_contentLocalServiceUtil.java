@@ -56,7 +56,7 @@ public class LTW_contentLocalServiceUtil {
 		String motorcycleManufacturing, int motorcycleYear) {
 
 		return getService().addLTW_content(
-			ltw_content, motorcycleName, motorcycleManufacturing,
+			 motorcycleName, motorcycleManufacturing,
 			motorcycleYear);
 	}
 

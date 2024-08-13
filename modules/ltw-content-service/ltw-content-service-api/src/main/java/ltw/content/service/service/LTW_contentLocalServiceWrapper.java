@@ -7,6 +7,7 @@ package ltw.content.service.service;
 
 import com.liferay.portal.kernel.service.ServiceWrapper;
 import com.liferay.portal.kernel.service.persistence.BasePersistence;
+import ltw.content.service.model.LTW_content;
 
 /**
  * Provides a wrapper for {@link LTW_contentLocalService}.
@@ -47,13 +48,17 @@ public class LTW_contentLocalServiceWrapper
 	}
 
 	@Override
+	public LTW_content addLTW_content(String motorcycleName, String motorcycleManufacturing, int motorcycleYear) {
+		return null;
+	}
+
 	public ltw.content.service.model.LTW_content addLTW_content(
 		ltw.content.service.model.LTW_content ltw_content,
 		String motorcycleName, String motorcycleManufacturing,
 		int motorcycleYear) {
 
 		return _ltw_contentLocalService.addLTW_content(
-			ltw_content, motorcycleName, motorcycleManufacturing,
+			motorcycleName, motorcycleManufacturing,
 			motorcycleYear);
 	}
 
