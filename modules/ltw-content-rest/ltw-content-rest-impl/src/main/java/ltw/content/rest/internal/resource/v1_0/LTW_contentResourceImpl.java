@@ -1,6 +1,6 @@
 package ltw.content.rest.internal.resource.v1_0;
 
-import jdk.nashorn.internal.parser.JSONParser;
+import com.liferay.portal.kernel.exception.PortalException;
 import ltw.content.rest.dto.v1_0.LTW_content;
 import ltw.content.rest.resource.v1_0.LTW_contentResource;
 
@@ -9,7 +9,9 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ServiceScope;
 import ltw.content.service.service.LTW_contentLocalService;
 
+import javax.validation.constraints.NotNull;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * @author Henrique Pereira
@@ -37,8 +39,19 @@ public class LTW_contentResourceImpl extends BaseLTW_contentResourceImpl {
 		}
 	}
 
+	@Override
+	public LTW_content getLTW_content(@NotNull Long ltwContentId) throws PortalException {
+
+		ltw.content.service.model.LTW_content content = _ltw_contentLocalService.getLTW_content(ltwContentId);
+		if(content != null) {
+			return _toLTWContent(content);
+		}
+		return null;
+	}
+
 	private LTW_content _toLTWContent(ltw.content.service.model.LTW_content content) {
 		return new LTW_content() {{
+			contentId = content.getLtwId();
 			motorcycleName = content.getMotorcycleName();
 			motorcycleManufacturing = content.getMotorcycleManufacturing();
 			motorcycleYear = content.getMotorcycleYear();

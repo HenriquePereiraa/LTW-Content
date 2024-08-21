@@ -37,7 +37,7 @@ info:
     version: v1.0
 openapi: 3.0.1
 paths:
-    "/ltw-content/add-ltw-content":
+    "/ltw-content":
         post:
             operationId: addLTW_content
             requestBody:
@@ -88,3 +88,24 @@ paths:
                 '500':
                     description: "Internal server error"
             tags: ["LTW_content"]
+    "/ltw-content/{ltwContentId}":
+        get:
+            operationId: getLTW_content
+            parameters:
+                - in: path
+                  name: ltwContentId
+                  required: true
+                  schema:
+                      format: int64
+                      type: integer
+            responses:
+                '200':
+                    description: "LTW content successfully fetched"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/LTW_content"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/LTW_content"
+            tags: [ "LTW_content" ]

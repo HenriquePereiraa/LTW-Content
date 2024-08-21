@@ -46,17 +46,47 @@ public abstract class BaseLTW_contentResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
-	 * curl -X 'POST' 'http://localhost:8080/o/ltw-content-rest/v1.0/ltw-content/add-ltw-content'  -u 'test@liferay.com:test'
+	 * curl -X 'POST' 'http://localhost:8080/o/ltw-content-rest/v1.0/ltw-content'  -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.tags.Tags(
 		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "LTW_content")}
 	)
 	@javax.ws.rs.Consumes({"application/json", "application/xml"})
-	@javax.ws.rs.Path("/ltw-content/add-ltw-content")
+	@javax.ws.rs.Path("/ltw-content")
 	@javax.ws.rs.POST
 	@javax.ws.rs.Produces({"application/json", "application/xml"})
 	@Override
 	public LTW_content addLTW_content(Object object) throws Exception {
+		return new LTW_content();
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
+	 * curl -X 'GET' 'http://localhost:8080/o/ltw-content-rest/v1.0/ltw-content/{ltwContentId}'  -u 'test@liferay.com:test'
+	 */
+	@io.swagger.v3.oas.annotations.Parameters(
+		value = {
+			@io.swagger.v3.oas.annotations.Parameter(
+				in = io.swagger.v3.oas.annotations.enums.ParameterIn.PATH,
+				name = "ltwContentId"
+			)
+		}
+	)
+	@io.swagger.v3.oas.annotations.tags.Tags(
+		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "LTW_content")}
+	)
+	@javax.ws.rs.GET
+	@javax.ws.rs.Path("/ltw-content/{ltwContentId}")
+	@javax.ws.rs.Produces({"application/json", "application/xml"})
+	@Override
+	public LTW_content getLTW_content(
+			@io.swagger.v3.oas.annotations.Parameter(hidden = true)
+			@javax.validation.constraints.NotNull
+			@javax.ws.rs.PathParam("ltwContentId")
+			Long ltwContentId)
+		throws Exception {
+
 		return new LTW_content();
 	}
 
