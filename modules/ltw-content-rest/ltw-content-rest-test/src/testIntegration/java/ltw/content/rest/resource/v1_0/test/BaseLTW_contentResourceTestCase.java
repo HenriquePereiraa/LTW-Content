@@ -198,6 +198,21 @@ public abstract class BaseLTW_contentResourceTestCase {
 			"This method needs to be implemented");
 	}
 
+	@Test
+	public void testGetLTW_content() throws Exception {
+		Assert.assertTrue(false);
+	}
+
+	@Test
+	public void testGraphQLGetLTW_content() throws Exception {
+		Assert.assertTrue(true);
+	}
+
+	@Test
+	public void testGraphQLGetLTW_contentNotFound() throws Exception {
+		Assert.assertTrue(true);
+	}
+
 	protected void assertContains(
 		LTW_content ltw_content, List<LTW_content> ltw_contents) {
 

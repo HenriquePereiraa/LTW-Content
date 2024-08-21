@@ -32,6 +32,9 @@ public class ServletDataImpl implements ServletData {
 	public void activate(BundleContext bundleContext) {
 		Mutation.setLTW_contentResourceComponentServiceObjects(
 			_ltw_contentResourceComponentServiceObjects);
+
+		Query.setLTW_contentResourceComponentServiceObjects(
+			_ltw_contentResourceComponentServiceObjects);
 	}
 
 	public String getApplicationName() {
@@ -72,6 +75,11 @@ public class ServletDataImpl implements ServletData {
 						"mutation#addLTW_content",
 						new ObjectValuePair<>(
 							LTW_contentResourceImpl.class, "addLTW_content"));
+
+					put(
+						"query#lTW_content",
+						new ObjectValuePair<>(
+							LTW_contentResourceImpl.class, "getLTW_content"));
 				}
 			};
 
