@@ -48,6 +48,19 @@ public class Mutation {
 			ltw_contentResource -> ltw_contentResource.addLTW_content(object));
 	}
 
+	@GraphQLField
+	public LTW_content updateLTW_Content(
+			@GraphQLName("ltwContentId") Long ltwContentId,
+			@GraphQLName("object") Object object)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_ltw_contentResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			ltw_contentResource -> ltw_contentResource.putLTW_Content(
+				ltwContentId, object));
+	}
+
 	private <T, R, E1 extends Throwable, E2 extends Throwable> R
 			_applyComponentServiceObjects(
 				ComponentServiceObjects<T> componentServiceObjects,
