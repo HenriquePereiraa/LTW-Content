@@ -43,6 +43,9 @@ public interface LTW_contentResource {
 
 	public LTW_content getLTW_content(Long ltwContentId) throws Exception;
 
+	public LTW_content putLTW_Content(Long ltwContentId, Object object)
+		throws Exception;
+
 	public default void setContextAcceptLanguage(
 		AcceptLanguage contextAcceptLanguage) {
 	}

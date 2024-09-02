@@ -213,6 +213,11 @@ public abstract class BaseLTW_contentResourceTestCase {
 		Assert.assertTrue(true);
 	}
 
+	@Test
+	public void testPutLTW_Content() throws Exception {
+		Assert.assertTrue(false);
+	}
+
 	protected void assertContains(
 		LTW_content ltw_content, List<LTW_content> ltw_contents) {
 
