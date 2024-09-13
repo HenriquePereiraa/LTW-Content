@@ -287,6 +287,9 @@ public interface LTW_contentLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getLTW_contentsCount();
 
+	@Indexable(type = IndexableType.REINDEX)
+	LTW_content updateLTW_content(long ltwId, LTW_content ltw_content) throws PortalException;
+
 	/**
 	 * Returns the OSGi service identifier.
 	 *

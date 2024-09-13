@@ -77,6 +77,25 @@ public class LTW_contentLocalServiceImpl
 		return super.getLTW_content(ltwId);
 	}
 
+	@Override
+	public LTW_content updateLTW_content(long ltwId, LTW_content ltw_content) throws PortalException {
+
+		LTW_content ltwContentById = ltw_contentPersistence.findByPrimaryKey(ltwId);
+
+		ltwContentById.setMotorcycleYear(ltw_content.getMotorcycleYear());
+		ltwContentById.setMotorcycleName(ltw_content.getMotorcycleName());
+		ltwContentById.setMotorcycleManufacturing(ltw_content.getMotorcycleManufacturing());
+
+		ltwContentById = ltw_contentPersistence.update(ltwContentById);
+
+		return ltwContentById;
+	}
+
+	@Override
+	public LTW_content updateLTW_content(LTW_content ltw_content) {
+		return null;
+	}
+
 	@Reference
 	private ResourceLocalService _resourceLocalService;
 }
