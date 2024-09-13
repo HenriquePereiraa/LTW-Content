@@ -5,6 +5,7 @@
 
 package ltw.content.service.service;
 
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.service.ServiceWrapper;
 import com.liferay.portal.kernel.service.persistence.BasePersistence;
 import ltw.content.service.model.LTW_content;
@@ -369,6 +370,11 @@ public class LTW_contentLocalServiceWrapper
 	@Override
 	public int getLTW_contentsCount() {
 		return _ltw_contentLocalService.getLTW_contentsCount();
+	}
+
+	@Override
+	public LTW_content updateLTW_content(long ltwId, LTW_content ltw_content) throws PortalException {
+		return null;
 	}
 
 	/**

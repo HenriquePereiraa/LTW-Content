@@ -49,7 +49,32 @@ public class LTW_contentResourceImpl extends BaseLTW_contentResourceImpl {
 		return null;
 	}
 
+	@Override
+	public LTW_content putLTW_Content(Long ltwContentId, Object object) throws Exception {
+
+		ltw.content.service.model.LTW_content ltwContent = _ltw_contentLocalService.fetchLTW_content(ltwContentId);
+
+		if(ltwContent == null) {
+			throw new Exception();
+		}
+
+		Map<String, Object> data = (Map<String, Object>) object;
+
+		String motorcycleName = (String) data.get("motorcycleName");
+		String motorcycleManufacturing =  (String) data.get("motorcycleManufacturing");
+		int motorcycleYear = (Integer) data.get("motorcycleYear");
+
+        ltwContent.setMotorcycleName(motorcycleName);
+		ltwContent.setMotorcycleYear(motorcycleYear);
+		ltwContent.setMotorcycleManufacturing(motorcycleManufacturing);
+
+		ltw.content.service.model.LTW_content content = _ltw_contentLocalService.updateLTW_content(ltwContentId, ltwContent);
+
+		return _toLTWContent(content);
+	}
+
 	private LTW_content _toLTWContent(ltw.content.service.model.LTW_content content) {
+
 		return new LTW_content() {{
 			contentId = content.getLtwId();
 			motorcycleName = content.getMotorcycleName();
