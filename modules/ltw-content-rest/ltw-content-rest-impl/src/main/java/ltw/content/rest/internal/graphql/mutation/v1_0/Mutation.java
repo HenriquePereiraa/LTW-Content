@@ -6,6 +6,7 @@ import com.liferay.portal.kernel.search.Sort;
 import com.liferay.portal.kernel.service.GroupLocalService;
 import com.liferay.portal.kernel.service.RoleLocalService;
 import com.liferay.portal.vulcan.accept.language.AcceptLanguage;
+import com.liferay.portal.vulcan.batch.engine.resource.VulcanBatchEngineImportTaskResource;
 import com.liferay.portal.vulcan.graphql.annotation.GraphQLField;
 import com.liferay.portal.vulcan.graphql.annotation.GraphQLName;
 
@@ -16,6 +17,7 @@ import javax.annotation.Generated;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import ltw.content.rest.dto.v1_0.LTW_content;
@@ -46,6 +48,34 @@ public class Mutation {
 			_ltw_contentResourceComponentServiceObjects,
 			this::_populateResourceContext,
 			ltw_contentResource -> ltw_contentResource.addLTW_content(object));
+	}
+
+	@GraphQLField
+	public boolean deleteLTW_content(
+			@GraphQLName("ltwContentId") Long ltwContentId)
+		throws Exception {
+
+		_applyVoidComponentServiceObjects(
+			_ltw_contentResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			ltw_contentResource -> ltw_contentResource.deleteLTW_content(
+				ltwContentId));
+
+		return true;
+	}
+
+	@GraphQLField
+	public Response deleteLTW_contentBatch(
+			@GraphQLName("ltwContentId") Long ltwContentId,
+			@GraphQLName("callbackURL") String callbackURL,
+			@GraphQLName("object") Object object)
+		throws Exception {
+
+		return _applyComponentServiceObjects(
+			_ltw_contentResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			ltw_contentResource -> ltw_contentResource.deleteLTW_contentBatch(
+				ltwContentId, callbackURL, object));
 	}
 
 	@GraphQLField
@@ -111,6 +141,9 @@ public class Mutation {
 		ltw_contentResource.setContextUser(_user);
 		ltw_contentResource.setGroupLocalService(_groupLocalService);
 		ltw_contentResource.setRoleLocalService(_roleLocalService);
+
+		ltw_contentResource.setVulcanBatchEngineImportTaskResource(
+			_vulcanBatchEngineImportTaskResource);
 	}
 
 	private static ComponentServiceObjects<LTW_contentResource>
@@ -125,5 +158,7 @@ public class Mutation {
 	private BiFunction<Object, String, Sort[]> _sortsBiFunction;
 	private UriInfo _uriInfo;
 	private com.liferay.portal.kernel.model.User _user;
+	private VulcanBatchEngineImportTaskResource
+		_vulcanBatchEngineImportTaskResource;
 
 }

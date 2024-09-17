@@ -199,6 +199,16 @@ public abstract class BaseLTW_contentResourceTestCase {
 	}
 
 	@Test
+	public void testDeleteLTW_content() throws Exception {
+		Assert.assertTrue(false);
+	}
+
+	@Test
+	public void testGraphQLDeleteLTW_content() throws Exception {
+		Assert.assertTrue(false);
+	}
+
+	@Test
 	public void testGetLTW_content() throws Exception {
 		Assert.assertTrue(false);
 	}

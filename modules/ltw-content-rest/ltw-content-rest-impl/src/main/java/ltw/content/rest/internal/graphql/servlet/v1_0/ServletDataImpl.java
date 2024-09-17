@@ -76,6 +76,16 @@ public class ServletDataImpl implements ServletData {
 						new ObjectValuePair<>(
 							LTW_contentResourceImpl.class, "addLTW_content"));
 					put(
+						"mutation#deleteLTW_content",
+						new ObjectValuePair<>(
+							LTW_contentResourceImpl.class,
+							"deleteLTW_content"));
+					put(
+						"mutation#deleteLTW_contentBatch",
+						new ObjectValuePair<>(
+							LTW_contentResourceImpl.class,
+							"deleteLTW_contentBatch"));
+					put(
 						"mutation#updateLTW_Content",
 						new ObjectValuePair<>(
 							LTW_contentResourceImpl.class, "putLTW_Content"));
