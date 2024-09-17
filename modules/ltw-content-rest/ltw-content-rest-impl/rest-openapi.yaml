@@ -167,3 +167,19 @@ paths:
                     description: "Internal server error"
             tags: [ "LTW_content" ]
 
+        delete:
+            operationId: deleteLTW_content
+            parameters:
+                - in: path
+                  name: ltwContentId
+                  required: true
+                  schema:
+                      format: int64
+                      type: integer
+            responses:
+                '204':
+                    description: "LTW content successfully deleted"
+                    content:
+                        application/json: {}
+                        application/xml: {}
+            tags: ["LTW_content" ]

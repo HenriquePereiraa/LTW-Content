@@ -96,6 +96,17 @@ public class LTW_contentLocalServiceImpl
 		return null;
 	}
 
+	@Override
+	public LTW_content deleteLTW_content(long ltwId) throws PortalException {
+		LTW_content ltwContent = ltw_contentPersistence.findByPrimaryKey(ltwId);
+
+		if (ltwContent == null) {
+			throw new PortalException("Content not found.");
+		}
+
+		return ltw_contentPersistence.remove(ltwId);
+	}
+
 	@Reference
 	private ResourceLocalService _resourceLocalService;
 }

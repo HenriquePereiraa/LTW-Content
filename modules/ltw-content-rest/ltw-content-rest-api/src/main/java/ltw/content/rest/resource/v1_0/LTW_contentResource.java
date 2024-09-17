@@ -10,6 +10,7 @@ import com.liferay.portal.odata.filter.ExpressionConvert;
 import com.liferay.portal.odata.filter.FilterParserProvider;
 import com.liferay.portal.odata.sort.SortParserProvider;
 import com.liferay.portal.vulcan.accept.language.AcceptLanguage;
+import com.liferay.portal.vulcan.batch.engine.resource.VulcanBatchEngineImportTaskResource;
 
 import java.util.Collections;
 import java.util.List;
@@ -21,6 +22,7 @@ import javax.annotation.Generated;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import ltw.content.rest.dto.v1_0.LTW_content;
@@ -40,6 +42,12 @@ import org.osgi.annotation.versioning.ProviderType;
 public interface LTW_contentResource {
 
 	public LTW_content addLTW_content(Object object) throws Exception;
+
+	public void deleteLTW_content(Long ltwContentId) throws Exception;
+
+	public Response deleteLTW_contentBatch(
+			Long ltwContentId, String callbackURL, Object object)
+		throws Exception;
 
 	public LTW_content getLTW_content(Long ltwContentId) throws Exception;
 
@@ -84,6 +92,10 @@ public interface LTW_contentResource {
 	public void setRoleLocalService(RoleLocalService roleLocalService);
 
 	public void setSortParserProvider(SortParserProvider sortParserProvider);
+
+	public void setVulcanBatchEngineImportTaskResource(
+		VulcanBatchEngineImportTaskResource
+			vulcanBatchEngineImportTaskResource);
 
 	public default Filter toFilter(String filterString) {
 		return toFilter(

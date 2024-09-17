@@ -73,6 +73,15 @@ public class LTW_contentResourceImpl extends BaseLTW_contentResourceImpl {
 		return _toLTWContent(content);
 	}
 
+	@Override
+	public void deleteLTW_content(Long ltwContentId) throws Exception {
+		if(ltwContentId == null) {
+			throw new Exception();
+		}
+
+		_ltw_contentLocalService.deleteLTW_content(ltwContentId);
+	}
+
 	private LTW_content _toLTWContent(ltw.content.service.model.LTW_content content) {
 
 		return new LTW_content() {{
