@@ -70,6 +70,22 @@ public abstract class BaseLTW_contentResourceImpl
 	/**
 	 * Invoke this method with the command line:
 	 *
+	 * curl -X 'GET' 'http://localhost:8080/o/ltw-content-rest/v1.0/ltw-content'  -u 'test@liferay.com:test'
+	 */
+	@io.swagger.v3.oas.annotations.tags.Tags(
+		value = {@io.swagger.v3.oas.annotations.tags.Tag(name = "LTW_content")}
+	)
+	@javax.ws.rs.GET
+	@javax.ws.rs.Path("/ltw-content")
+	@javax.ws.rs.Produces({"application/json", "application/xml"})
+	@Override
+	public Page<LTW_content> getAllLTW_contents() throws Exception {
+		return Page.of(Collections.emptyList());
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
 	 * curl -X 'POST' 'http://localhost:8080/o/ltw-content-rest/v1.0/ltw-content'  -u 'test@liferay.com:test'
 	 */
 	@io.swagger.v3.oas.annotations.tags.Tags(

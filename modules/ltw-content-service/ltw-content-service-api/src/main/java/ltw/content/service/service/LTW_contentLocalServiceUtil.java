@@ -52,12 +52,11 @@ public class LTW_contentLocalServiceUtil {
 	}
 
 	public static LTW_content addLTW_content(
-		LTW_content ltw_content, String motorcycleName,
-		String motorcycleManufacturing, int motorcycleYear) {
+		String motorcycleName, String motorcycleManufacturing,
+		int motorcycleYear) {
 
 		return getService().addLTW_content(
-			 motorcycleName, motorcycleManufacturing,
-			motorcycleYear);
+			motorcycleName, motorcycleManufacturing, motorcycleYear);
 	}
 
 	/**
@@ -229,6 +228,10 @@ public class LTW_contentLocalServiceUtil {
 		return getService().getActionableDynamicQuery();
 	}
 
+	public static List<LTW_content> getAllLTW_Contents() {
+		return getService().getAllLTW_Contents();
+	}
+
 	public static com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery
 		getExportActionableDynamicQuery(
 			com.liferay.exportimport.kernel.lar.PortletDataContext
@@ -343,6 +346,13 @@ public class LTW_contentLocalServiceUtil {
 		throws PortalException {
 
 		return getService().getPersistedModel(primaryKeyObj);
+	}
+
+	public static LTW_content updateLTW_content(
+			long ltwId, LTW_content ltw_content)
+		throws PortalException {
+
+		return getService().updateLTW_content(ltwId, ltw_content);
 	}
 
 	/**

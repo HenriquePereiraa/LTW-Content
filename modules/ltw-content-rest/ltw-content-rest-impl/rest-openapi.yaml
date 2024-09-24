@@ -88,6 +88,23 @@ paths:
                 '500':
                     description: "Internal server error"
             tags: ["LTW_content"]
+        get:
+            operationId: getAllLTW_contents
+            responses:
+                '200':
+                    description: "LTW content successfully fetched all contents"
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/LTW_content"
+                                type: array
+                        application/xml:
+                                schema:
+                                    items:
+                                        $ref: "#/components/schemas/LTW_content"
+                                    type: array    
+            tags: ["LTW_content"]
     "/ltw-content/{ltwContentId}":
         get:
             operationId: getLTW_content

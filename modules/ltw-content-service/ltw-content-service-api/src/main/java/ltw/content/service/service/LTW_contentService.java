@@ -13,6 +13,8 @@ import com.liferay.portal.kernel.service.BaseService;
 import com.liferay.portal.kernel.transaction.Isolation;
 import com.liferay.portal.kernel.transaction.Transactional;
 
+import ltw.content.service.model.LTW_content;
+
 import org.osgi.annotation.versioning.ProviderType;
 
 /**
@@ -38,6 +40,10 @@ public interface LTW_contentService extends BaseService {
 	 *
 	 * Never modify this interface directly. Add custom service methods to <code>ltw.content.service.service.impl.LTW_contentServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface. Consume the ltw_content remote service via injection or a <code>org.osgi.util.tracker.ServiceTracker</code>. Use {@link LTW_contentServiceUtil} if injection and service tracking are not available.
 	 */
+	public LTW_content addLTW_content(
+			String motorcycleName, String motorcycleManufacturing,
+			int motorcycleYear)
+		throws PortalException;
 
 	/**
 	 * Returns the OSGi service identifier.

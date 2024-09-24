@@ -13,7 +13,9 @@ import javax.annotation.Generated;
 
 import ltw.content.rest.client.dto.v1_0.LTW_content;
 import ltw.content.rest.client.http.HttpInvoker;
+import ltw.content.rest.client.pagination.Page;
 import ltw.content.rest.client.problem.Problem;
+import ltw.content.rest.client.serdes.v1_0.LTW_contentSerDes;
 
 /**
  * @author Henrique Pereira
@@ -25,6 +27,11 @@ public interface LTW_contentResource {
 	public static Builder builder() {
 		return new Builder();
 	}
+
+	public Page<LTW_content> getAllLTW_contents() throws Exception;
+
+	public HttpInvoker.HttpResponse getAllLTW_contentsHttpResponse()
+		throws Exception;
 
 	public LTW_content addLTW_content(Object object) throws Exception;
 
@@ -166,6 +173,104 @@ public interface LTW_contentResource {
 
 	public static class LTW_contentResourceImpl implements LTW_contentResource {
 
+		public Page<LTW_content> getAllLTW_contents() throws Exception {
+			HttpInvoker.HttpResponse httpResponse =
+				getAllLTW_contentsHttpResponse();
+
+			String content = httpResponse.getContent();
+
+			if ((httpResponse.getStatusCode() / 100) != 2) {
+				_logger.log(
+					Level.WARNING,
+					"Unable to process HTTP response content: " + content);
+				_logger.log(
+					Level.WARNING,
+					"HTTP response message: " + httpResponse.getMessage());
+				_logger.log(
+					Level.WARNING,
+					"HTTP response status code: " +
+						httpResponse.getStatusCode());
+
+				Problem.ProblemException problemException = null;
+
+				if (Objects.equals(
+						httpResponse.getContentType(), "application/json")) {
+
+					problemException = new Problem.ProblemException(
+						Problem.toDTO(content));
+				}
+				else {
+					_logger.log(
+						Level.WARNING,
+						"Unable to process content type: " +
+							httpResponse.getContentType());
+
+					Problem problem = new Problem();
+
+					problem.setStatus(
+						String.valueOf(httpResponse.getStatusCode()));
+
+					problemException = new Problem.ProblemException(problem);
+				}
+
+				throw problemException;
+			}
+			else {
+				_logger.fine("HTTP response content: " + content);
+				_logger.fine(
+					"HTTP response message: " + httpResponse.getMessage());
+				_logger.fine(
+					"HTTP response status code: " +
+						httpResponse.getStatusCode());
+			}
+
+			try {
+				return Page.of(content, LTW_contentSerDes::toDTO);
+			}
+			catch (Exception e) {
+				_logger.log(
+					Level.WARNING,
+					"Unable to process HTTP response: " + content, e);
+
+				throw new Problem.ProblemException(Problem.toDTO(content));
+			}
+		}
+
+		public HttpInvoker.HttpResponse getAllLTW_contentsHttpResponse()
+			throws Exception {
+
+			HttpInvoker httpInvoker = HttpInvoker.newHttpInvoker();
+
+			if (_builder._locale != null) {
+				httpInvoker.header(
+					"Accept-Language", _builder._locale.toLanguageTag());
+			}
+
+			for (Map.Entry<String, String> entry :
+					_builder._headers.entrySet()) {
+
+				httpInvoker.header(entry.getKey(), entry.getValue());
+			}
+
+			for (Map.Entry<String, String> entry :
+					_builder._parameters.entrySet()) {
+
+				httpInvoker.parameter(entry.getKey(), entry.getValue());
+			}
+
+			httpInvoker.httpMethod(HttpInvoker.HttpMethod.GET);
+
+			httpInvoker.path(
+				_builder._scheme + "://" + _builder._host + ":" +
+					_builder._port + _builder._contextPath +
+						"/o/ltw-content-rest/v1.0/ltw-content");
+
+			httpInvoker.userNameAndPassword(
+				_builder._login + ":" + _builder._password);
+
+			return httpInvoker.invoke();
+		}
+
 		public LTW_content addLTW_content(Object object) throws Exception {
 			HttpInvoker.HttpResponse httpResponse = addLTW_contentHttpResponse(
 				object);
@@ -218,8 +323,7 @@ public interface LTW_contentResource {
 			}
 
 			try {
-				return ltw.content.rest.client.serdes.v1_0.LTW_contentSerDes.
-					toDTO(content);
+				return LTW_contentSerDes.toDTO(content);
 			}
 			catch (Exception e) {
 				_logger.log(
@@ -522,8 +626,7 @@ public interface LTW_contentResource {
 			}
 
 			try {
-				return ltw.content.rest.client.serdes.v1_0.LTW_contentSerDes.
-					toDTO(content);
+				return LTW_contentSerDes.toDTO(content);
 			}
 			catch (Exception e) {
 				_logger.log(
@@ -626,8 +729,7 @@ public interface LTW_contentResource {
 			}
 
 			try {
-				return ltw.content.rest.client.serdes.v1_0.LTW_contentSerDes.
-					toDTO(content);
+				return LTW_contentSerDes.toDTO(content);
 			}
 			catch (Exception e) {
 				_logger.log(

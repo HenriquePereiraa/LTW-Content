@@ -180,6 +180,44 @@ public abstract class BaseLTW_contentResourceTestCase {
 	}
 
 	@Test
+	public void testGetAllLTW_contents() throws Exception {
+		Page<LTW_content> page = ltw_contentResource.getAllLTW_contents();
+
+		long totalCount = page.getTotalCount();
+
+		LTW_content ltw_content1 = testGetAllLTW_contents_addLTW_content(
+			randomLTW_content());
+
+		LTW_content ltw_content2 = testGetAllLTW_contents_addLTW_content(
+			randomLTW_content());
+
+		page = ltw_contentResource.getAllLTW_contents();
+
+		Assert.assertEquals(totalCount + 2, page.getTotalCount());
+
+		assertContains(ltw_content1, (List<LTW_content>)page.getItems());
+		assertContains(ltw_content2, (List<LTW_content>)page.getItems());
+		assertValid(page, testGetAllLTW_contents_getExpectedActions());
+	}
+
+	protected Map<String, Map<String, String>>
+			testGetAllLTW_contents_getExpectedActions()
+		throws Exception {
+
+		Map<String, Map<String, String>> expectedActions = new HashMap<>();
+
+		return expectedActions;
+	}
+
+	protected LTW_content testGetAllLTW_contents_addLTW_content(
+			LTW_content ltw_content)
+		throws Exception {
+
+		throw new UnsupportedOperationException(
+			"This method needs to be implemented");
+	}
+
+	@Test
 	public void testAddLTW_content() throws Exception {
 		LTW_content randomLTW_content = randomLTW_content();
 
