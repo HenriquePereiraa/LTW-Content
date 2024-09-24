@@ -5,10 +5,8 @@
 
 package ltw.content.service.service;
 
-import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.service.ServiceWrapper;
 import com.liferay.portal.kernel.service.persistence.BasePersistence;
-import ltw.content.service.model.LTW_content;
 
 /**
  * Provides a wrapper for {@link LTW_contentLocalService}.
@@ -49,18 +47,12 @@ public class LTW_contentLocalServiceWrapper
 	}
 
 	@Override
-	public LTW_content addLTW_content(String motorcycleName, String motorcycleManufacturing, int motorcycleYear) {
-		return null;
-	}
-
 	public ltw.content.service.model.LTW_content addLTW_content(
-		ltw.content.service.model.LTW_content ltw_content,
 		String motorcycleName, String motorcycleManufacturing,
 		int motorcycleYear) {
 
 		return _ltw_contentLocalService.addLTW_content(
-			motorcycleName, motorcycleManufacturing,
-			motorcycleYear);
+			motorcycleName, motorcycleManufacturing, motorcycleYear);
 	}
 
 	/**
@@ -261,6 +253,13 @@ public class LTW_contentLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<ltw.content.service.model.LTW_content>
+		getAllLTW_Contents() {
+
+		return _ltw_contentLocalService.getAllLTW_Contents();
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery
 		getExportActionableDynamicQuery(
 			com.liferay.exportimport.kernel.lar.PortletDataContext
@@ -372,11 +371,6 @@ public class LTW_contentLocalServiceWrapper
 		return _ltw_contentLocalService.getLTW_contentsCount();
 	}
 
-	@Override
-	public LTW_content updateLTW_content(long ltwId, LTW_content ltw_content) throws PortalException {
-		return null;
-	}
-
 	/**
 	 * Returns the OSGi service identifier.
 	 *
@@ -396,6 +390,14 @@ public class LTW_contentLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _ltw_contentLocalService.getPersistedModel(primaryKeyObj);
+	}
+
+	@Override
+	public ltw.content.service.model.LTW_content updateLTW_content(
+			long ltwId, ltw.content.service.model.LTW_content ltw_content)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _ltw_contentLocalService.updateLTW_content(ltwId, ltw_content);
 	}
 
 	/**

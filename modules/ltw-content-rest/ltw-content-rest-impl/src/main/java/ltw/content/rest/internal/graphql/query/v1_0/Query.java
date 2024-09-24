@@ -44,6 +44,20 @@ public class Query {
 	/**
 	 * Invoke this method with the command line:
 	 *
+	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {allLTW_contents{items {__}, page, pageSize, totalCount}}"}' -u 'test@liferay.com:test'
+	 */
+	@GraphQLField
+	public LTW_contentPage allLTW_contents() throws Exception {
+		return _applyComponentServiceObjects(
+			_ltw_contentResourceComponentServiceObjects,
+			this::_populateResourceContext,
+			ltw_contentResource -> new LTW_contentPage(
+				ltw_contentResource.getAllLTW_contents()));
+	}
+
+	/**
+	 * Invoke this method with the command line:
+	 *
 	 * curl -H 'Content-Type: text/plain; charset=utf-8' -X 'POST' 'http://localhost:8080/o/graphql' -d $'{"query": "query {lTW_content(ltwContentId: ___){contentId, motorcycleName, motorcycleManufacturing, motorcycleYear, userId, userName, createDate, modifiedDate}}"}' -u 'test@liferay.com:test'
 	 */
 	@GraphQLField

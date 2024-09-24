@@ -11,6 +11,7 @@ import com.liferay.portal.odata.filter.FilterParserProvider;
 import com.liferay.portal.odata.sort.SortParserProvider;
 import com.liferay.portal.vulcan.accept.language.AcceptLanguage;
 import com.liferay.portal.vulcan.batch.engine.resource.VulcanBatchEngineImportTaskResource;
+import com.liferay.portal.vulcan.pagination.Page;
 
 import java.util.Collections;
 import java.util.List;
@@ -40,6 +41,8 @@ import org.osgi.annotation.versioning.ProviderType;
 @Generated("")
 @ProviderType
 public interface LTW_contentResource {
+
+	public Page<LTW_content> getAllLTW_contents() throws Exception;
 
 	public LTW_content addLTW_content(Object object) throws Exception;
 

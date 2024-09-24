@@ -91,6 +91,11 @@ public class ServletDataImpl implements ServletData {
 							LTW_contentResourceImpl.class, "putLTW_Content"));
 
 					put(
+						"query#allLTW_contents",
+						new ObjectValuePair<>(
+							LTW_contentResourceImpl.class,
+							"getAllLTW_contents"));
+					put(
 						"query#lTW_content",
 						new ObjectValuePair<>(
 							LTW_contentResourceImpl.class, "getLTW_content"));

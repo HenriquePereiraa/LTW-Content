@@ -69,8 +69,9 @@ public interface LTW_contentLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public LTW_content addLTW_content(LTW_content ltw_content);
 
-	public LTW_content addLTW_content( String motorcycleName,
-		String motorcycleManufacturing, int motorcycleYear);
+	public LTW_content addLTW_content(
+		String motorcycleName, String motorcycleManufacturing,
+		int motorcycleYear);
 
 	/**
 	 * Creates a new ltw_content with the primary key. Does not add the ltw_content to the database.
@@ -211,6 +212,9 @@ public interface LTW_contentLocalService
 	public ActionableDynamicQuery getActionableDynamicQuery();
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<LTW_content> getAllLTW_Contents();
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ExportActionableDynamicQuery getExportActionableDynamicQuery(
 		PortletDataContext portletDataContext);
 
@@ -287,9 +291,6 @@ public interface LTW_contentLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getLTW_contentsCount();
 
-	@Indexable(type = IndexableType.REINDEX)
-	LTW_content updateLTW_content(long ltwId, LTW_content ltw_content) throws PortalException;
-
 	/**
 	 * Returns the OSGi service identifier.
 	 *
@@ -303,6 +304,9 @@ public interface LTW_contentLocalService
 	@Override
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public PersistedModel getPersistedModel(Serializable primaryKeyObj)
+		throws PortalException;
+
+	public LTW_content updateLTW_content(long ltwId, LTW_content ltw_content)
 		throws PortalException;
 
 	/**

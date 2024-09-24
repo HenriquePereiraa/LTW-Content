@@ -25,6 +25,16 @@ public class LTW_contentServiceWrapper
 		_ltw_contentService = ltw_contentService;
 	}
 
+	@Override
+	public ltw.content.service.model.LTW_content addLTW_content(
+			String motorcycleName, String motorcycleManufacturing,
+			int motorcycleYear)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _ltw_contentService.addLTW_content(
+			motorcycleName, motorcycleManufacturing, motorcycleYear);
+	}
+
 	/**
 	 * Returns the OSGi service identifier.
 	 *

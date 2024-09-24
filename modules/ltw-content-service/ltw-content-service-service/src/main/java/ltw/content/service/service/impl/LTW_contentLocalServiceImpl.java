@@ -20,6 +20,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Brian Wing Shun Chan
@@ -75,6 +76,11 @@ public class LTW_contentLocalServiceImpl
 	@Override
 	public LTW_content getLTW_content(long ltwId) throws PortalException {
 		return super.getLTW_content(ltwId);
+	}
+
+	@Override
+	public List<LTW_content> getAllLTW_Contents() {
+			return ltw_contentPersistence.findAll();
 	}
 
 	@Override

@@ -500,7 +500,7 @@ public abstract class LTW_contentLocalServiceBaseImpl
 	 */
 	@Indexable(type = IndexableType.REINDEX)
 	@Override
-	public LTW_content updateLTW_content(long ltwId, LTW_content ltw_content) throws PortalException {
+	public LTW_content updateLTW_content(LTW_content ltw_content) {
 		return ltw_contentPersistence.update(ltw_content);
 	}
 

@@ -1,6 +1,7 @@
 package ltw.content.rest.internal.resource.v1_0;
 
 import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.vulcan.pagination.Page;
 import ltw.content.rest.dto.v1_0.LTW_content;
 import ltw.content.rest.resource.v1_0.LTW_contentResource;
 
@@ -10,8 +11,10 @@ import org.osgi.service.component.annotations.ServiceScope;
 import ltw.content.service.service.LTW_contentLocalService;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * @author Henrique Pereira
@@ -47,6 +50,20 @@ public class LTW_contentResourceImpl extends BaseLTW_contentResourceImpl {
 			return _toLTWContent(content);
 		}
 		return null;
+	}
+
+	@Override
+	public Page<LTW_content> getAllLTW_contents() throws Exception {
+		// Recupera todos os conteúdos
+		List<ltw.content.service.model.LTW_content> contents = _ltw_contentLocalService.getLTW_contents(0, _ltw_contentLocalService.getLTW_contentsCount());
+
+		// Mapeia os conteúdos para DTOs
+		List<LTW_content> ltwContentDTOs = contents.stream()
+				.map(this::_toLTWContent)
+				.collect(Collectors.toList());
+
+		// Retorna a página com todos os conteúdos (sem paginação)
+		return Page.of(ltwContentDTOs);
 	}
 
 	@Override
