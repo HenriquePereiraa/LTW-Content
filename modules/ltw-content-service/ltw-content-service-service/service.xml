@@ -44,24 +44,28 @@
 			<finder-column name="companyId" />
 		</finder>
 
-		<finder name="UserId" return-type="Collection">
+		<finder name="C_U" return-type="Collection">
+			<finder-column name="companyId" />
 			<finder-column name="userId" />
 		</finder>
 
-		<finder name="UserName" return-type="Collection">
+		<finder name="U" return-type="Collection">
 			<finder-column name="userName" />
 		</finder>
 
-		<finder name="MotorcycleName" return-type="Collection">
+		<finder name="C_M" return-type="Collection">
+			<finder-column name="companyId" />
 			<finder-column name="motorcycleName" />
 		</finder>
 
-		<finder name="MotorcycleManufacturing" return-type="Collection">
+		<finder name="G_M" return-type="Collection">
+			<finder-column name="groupId" />
 			<finder-column name="motorcycleManufacturing" />
 		</finder>
 
-		<finder name="MotorcycleYear" return-type="Collection">
+		<finder name="M_L" return-type="Collection">
 			<finder-column name="motorcycleYear" />
+			<finder-column name="ltwId" />
 		</finder>
 
 	</entity>

@@ -9,6 +9,8 @@ import com.liferay.petra.sql.dsl.query.DSLQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.model.PersistedModel;
+import com.liferay.portal.kernel.search.BaseModelSearchResult;
+import com.liferay.portal.kernel.search.Sort;
 import com.liferay.portal.kernel.util.OrderByComparator;
 
 import java.io.Serializable;
@@ -346,6 +348,16 @@ public class LTW_contentLocalServiceUtil {
 		throws PortalException {
 
 		return getService().getPersistedModel(primaryKeyObj);
+	}
+
+	public static BaseModelSearchResult<LTW_content> searchLtwContent(
+			long companyId, String className, long classPK, String keywords,
+			java.util.LinkedHashMap<String, Object> params, int start, int end,
+			Sort sort)
+			throws PortalException {
+
+		return getService().searchLtwContent(
+				companyId, className, classPK, keywords, params, start, end, sort);
 	}
 
 	public static LTW_content updateLTW_content(
