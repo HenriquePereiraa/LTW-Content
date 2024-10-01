@@ -1,0 +1,4 @@
+Bundle-Name: ltw-content-web
+Bundle-SymbolicName: ltw.content.web
+Bundle-Version: 1.0.0
+Export-Package: ltw.content.web.constants

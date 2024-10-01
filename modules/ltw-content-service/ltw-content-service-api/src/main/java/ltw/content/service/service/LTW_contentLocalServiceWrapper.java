@@ -5,8 +5,14 @@
 
 package ltw.content.service.service;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.search.BaseModelSearchResult;
+import com.liferay.portal.kernel.search.Sort;
 import com.liferay.portal.kernel.service.ServiceWrapper;
 import com.liferay.portal.kernel.service.persistence.BasePersistence;
+import ltw.content.service.model.LTW_content;
+
+import java.util.LinkedHashMap;
 
 /**
  * Provides a wrapper for {@link LTW_contentLocalService}.
@@ -390,6 +396,11 @@ public class LTW_contentLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _ltw_contentLocalService.getPersistedModel(primaryKeyObj);
+	}
+
+	@Override
+	public BaseModelSearchResult<LTW_content> searchLtwContent(long companyId, String className, long classPK, String keywords, LinkedHashMap<String, Object> params, int start, int end, Sort sort) throws PortalException {
+		return null;
 	}
 
 	@Override

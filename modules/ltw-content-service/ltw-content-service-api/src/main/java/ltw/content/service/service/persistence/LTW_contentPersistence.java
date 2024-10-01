@@ -667,53 +667,57 @@ public interface LTW_contentPersistence extends BasePersistence<LTW_content> {
 	public int countByCompanyId(long companyId);
 
 	/**
-	 * Returns all the ltw_contents where userId = &#63;.
+	 * Returns all the ltw_contents where companyId = &#63; and userId = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 * @return the matching ltw_contents
 	 */
-	public java.util.List<LTW_content> findByUserId(long userId);
+	public java.util.List<LTW_content> findByC_U(long companyId, long userId);
 
 	/**
-	 * Returns a range of all the ltw_contents where userId = &#63;.
+	 * Returns a range of all the ltw_contents where companyId = &#63; and userId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
 	 * @return the range of matching ltw_contents
 	 */
-	public java.util.List<LTW_content> findByUserId(
-		long userId, int start, int end);
+	public java.util.List<LTW_content> findByC_U(
+		long companyId, long userId, int start, int end);
 
 	/**
-	 * Returns an ordered range of all the ltw_contents where userId = &#63;.
+	 * Returns an ordered range of all the ltw_contents where companyId = &#63; and userId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching ltw_contents
 	 */
-	public java.util.List<LTW_content> findByUserId(
-		long userId, int start, int end,
+	public java.util.List<LTW_content> findByC_U(
+		long companyId, long userId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 			orderByComparator);
 
 	/**
-	 * Returns an ordered range of all the ltw_contents where userId = &#63;.
+	 * Returns an ordered range of all the ltw_contents where companyId = &#63; and userId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
@@ -721,93 +725,100 @@ public interface LTW_contentPersistence extends BasePersistence<LTW_content> {
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching ltw_contents
 	 */
-	public java.util.List<LTW_content> findByUserId(
-		long userId, int start, int end,
+	public java.util.List<LTW_content> findByC_U(
+		long companyId, long userId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 			orderByComparator,
 		boolean useFinderCache);
 
 	/**
-	 * Returns the first ltw_content in the ordered set where userId = &#63;.
+	 * Returns the first ltw_content in the ordered set where companyId = &#63; and userId = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching ltw_content
 	 * @throws NoSuch_contentException if a matching ltw_content could not be found
 	 */
-	public LTW_content findByUserId_First(
-			long userId,
+	public LTW_content findByC_U_First(
+			long companyId, long userId,
 			com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 				orderByComparator)
 		throws NoSuch_contentException;
 
 	/**
-	 * Returns the first ltw_content in the ordered set where userId = &#63;.
+	 * Returns the first ltw_content in the ordered set where companyId = &#63; and userId = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching ltw_content, or <code>null</code> if a matching ltw_content could not be found
 	 */
-	public LTW_content fetchByUserId_First(
-		long userId,
+	public LTW_content fetchByC_U_First(
+		long companyId, long userId,
 		com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 			orderByComparator);
 
 	/**
-	 * Returns the last ltw_content in the ordered set where userId = &#63;.
+	 * Returns the last ltw_content in the ordered set where companyId = &#63; and userId = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching ltw_content
 	 * @throws NoSuch_contentException if a matching ltw_content could not be found
 	 */
-	public LTW_content findByUserId_Last(
-			long userId,
+	public LTW_content findByC_U_Last(
+			long companyId, long userId,
 			com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 				orderByComparator)
 		throws NoSuch_contentException;
 
 	/**
-	 * Returns the last ltw_content in the ordered set where userId = &#63;.
+	 * Returns the last ltw_content in the ordered set where companyId = &#63; and userId = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching ltw_content, or <code>null</code> if a matching ltw_content could not be found
 	 */
-	public LTW_content fetchByUserId_Last(
-		long userId,
+	public LTW_content fetchByC_U_Last(
+		long companyId, long userId,
 		com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 			orderByComparator);
 
 	/**
-	 * Returns the ltw_contents before and after the current ltw_content in the ordered set where userId = &#63;.
+	 * Returns the ltw_contents before and after the current ltw_content in the ordered set where companyId = &#63; and userId = &#63;.
 	 *
 	 * @param ltwId the primary key of the current ltw_content
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next ltw_content
 	 * @throws NoSuch_contentException if a ltw_content with the primary key could not be found
 	 */
-	public LTW_content[] findByUserId_PrevAndNext(
-			long ltwId, long userId,
+	public LTW_content[] findByC_U_PrevAndNext(
+			long ltwId, long companyId, long userId,
 			com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 				orderByComparator)
 		throws NoSuch_contentException;
 
 	/**
-	 * Removes all the ltw_contents where userId = &#63; from the database.
+	 * Removes all the ltw_contents where companyId = &#63; and userId = &#63; from the database.
 	 *
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 */
-	public void removeByUserId(long userId);
+	public void removeByC_U(long companyId, long userId);
 
 	/**
-	 * Returns the number of ltw_contents where userId = &#63;.
+	 * Returns the number of ltw_contents where companyId = &#63; and userId = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 * @return the number of matching ltw_contents
 	 */
-	public int countByUserId(long userId);
+	public int countByC_U(long companyId, long userId);
 
 	/**
 	 * Returns all the ltw_contents where userName = &#63;.
@@ -815,7 +826,7 @@ public interface LTW_contentPersistence extends BasePersistence<LTW_content> {
 	 * @param userName the user name
 	 * @return the matching ltw_contents
 	 */
-	public java.util.List<LTW_content> findByUserName(String userName);
+	public java.util.List<LTW_content> findByU(String userName);
 
 	/**
 	 * Returns a range of all the ltw_contents where userName = &#63;.
@@ -829,7 +840,7 @@ public interface LTW_contentPersistence extends BasePersistence<LTW_content> {
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
 	 * @return the range of matching ltw_contents
 	 */
-	public java.util.List<LTW_content> findByUserName(
+	public java.util.List<LTW_content> findByU(
 		String userName, int start, int end);
 
 	/**
@@ -845,7 +856,7 @@ public interface LTW_contentPersistence extends BasePersistence<LTW_content> {
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching ltw_contents
 	 */
-	public java.util.List<LTW_content> findByUserName(
+	public java.util.List<LTW_content> findByU(
 		String userName, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 			orderByComparator);
@@ -864,7 +875,7 @@ public interface LTW_contentPersistence extends BasePersistence<LTW_content> {
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching ltw_contents
 	 */
-	public java.util.List<LTW_content> findByUserName(
+	public java.util.List<LTW_content> findByU(
 		String userName, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 			orderByComparator,
@@ -878,7 +889,7 @@ public interface LTW_contentPersistence extends BasePersistence<LTW_content> {
 	 * @return the first matching ltw_content
 	 * @throws NoSuch_contentException if a matching ltw_content could not be found
 	 */
-	public LTW_content findByUserName_First(
+	public LTW_content findByU_First(
 			String userName,
 			com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 				orderByComparator)
@@ -891,7 +902,7 @@ public interface LTW_contentPersistence extends BasePersistence<LTW_content> {
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching ltw_content, or <code>null</code> if a matching ltw_content could not be found
 	 */
-	public LTW_content fetchByUserName_First(
+	public LTW_content fetchByU_First(
 		String userName,
 		com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 			orderByComparator);
@@ -904,7 +915,7 @@ public interface LTW_contentPersistence extends BasePersistence<LTW_content> {
 	 * @return the last matching ltw_content
 	 * @throws NoSuch_contentException if a matching ltw_content could not be found
 	 */
-	public LTW_content findByUserName_Last(
+	public LTW_content findByU_Last(
 			String userName,
 			com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 				orderByComparator)
@@ -917,7 +928,7 @@ public interface LTW_contentPersistence extends BasePersistence<LTW_content> {
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching ltw_content, or <code>null</code> if a matching ltw_content could not be found
 	 */
-	public LTW_content fetchByUserName_Last(
+	public LTW_content fetchByU_Last(
 		String userName,
 		com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 			orderByComparator);
@@ -931,7 +942,7 @@ public interface LTW_contentPersistence extends BasePersistence<LTW_content> {
 	 * @return the previous, current, and next ltw_content
 	 * @throws NoSuch_contentException if a ltw_content with the primary key could not be found
 	 */
-	public LTW_content[] findByUserName_PrevAndNext(
+	public LTW_content[] findByU_PrevAndNext(
 			long ltwId, String userName,
 			com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 				orderByComparator)
@@ -942,7 +953,7 @@ public interface LTW_contentPersistence extends BasePersistence<LTW_content> {
 	 *
 	 * @param userName the user name
 	 */
-	public void removeByUserName(String userName);
+	public void removeByU(String userName);
 
 	/**
 	 * Returns the number of ltw_contents where userName = &#63;.
@@ -950,57 +961,61 @@ public interface LTW_contentPersistence extends BasePersistence<LTW_content> {
 	 * @param userName the user name
 	 * @return the number of matching ltw_contents
 	 */
-	public int countByUserName(String userName);
+	public int countByU(String userName);
 
 	/**
-	 * Returns all the ltw_contents where motorcycleName = &#63;.
+	 * Returns all the ltw_contents where companyId = &#63; and motorcycleName = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 * @return the matching ltw_contents
 	 */
-	public java.util.List<LTW_content> findByMotorcycleName(
-		String motorcycleName);
+	public java.util.List<LTW_content> findByC_M(
+		long companyId, String motorcycleName);
 
 	/**
-	 * Returns a range of all the ltw_contents where motorcycleName = &#63;.
+	 * Returns a range of all the ltw_contents where companyId = &#63; and motorcycleName = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
 	 * @return the range of matching ltw_contents
 	 */
-	public java.util.List<LTW_content> findByMotorcycleName(
-		String motorcycleName, int start, int end);
+	public java.util.List<LTW_content> findByC_M(
+		long companyId, String motorcycleName, int start, int end);
 
 	/**
-	 * Returns an ordered range of all the ltw_contents where motorcycleName = &#63;.
+	 * Returns an ordered range of all the ltw_contents where companyId = &#63; and motorcycleName = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching ltw_contents
 	 */
-	public java.util.List<LTW_content> findByMotorcycleName(
-		String motorcycleName, int start, int end,
+	public java.util.List<LTW_content> findByC_M(
+		long companyId, String motorcycleName, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 			orderByComparator);
 
 	/**
-	 * Returns an ordered range of all the ltw_contents where motorcycleName = &#63;.
+	 * Returns an ordered range of all the ltw_contents where companyId = &#63; and motorcycleName = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
@@ -1008,143 +1023,154 @@ public interface LTW_contentPersistence extends BasePersistence<LTW_content> {
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching ltw_contents
 	 */
-	public java.util.List<LTW_content> findByMotorcycleName(
-		String motorcycleName, int start, int end,
+	public java.util.List<LTW_content> findByC_M(
+		long companyId, String motorcycleName, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 			orderByComparator,
 		boolean useFinderCache);
 
 	/**
-	 * Returns the first ltw_content in the ordered set where motorcycleName = &#63;.
+	 * Returns the first ltw_content in the ordered set where companyId = &#63; and motorcycleName = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching ltw_content
 	 * @throws NoSuch_contentException if a matching ltw_content could not be found
 	 */
-	public LTW_content findByMotorcycleName_First(
-			String motorcycleName,
+	public LTW_content findByC_M_First(
+			long companyId, String motorcycleName,
 			com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 				orderByComparator)
 		throws NoSuch_contentException;
 
 	/**
-	 * Returns the first ltw_content in the ordered set where motorcycleName = &#63;.
+	 * Returns the first ltw_content in the ordered set where companyId = &#63; and motorcycleName = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching ltw_content, or <code>null</code> if a matching ltw_content could not be found
 	 */
-	public LTW_content fetchByMotorcycleName_First(
-		String motorcycleName,
+	public LTW_content fetchByC_M_First(
+		long companyId, String motorcycleName,
 		com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 			orderByComparator);
 
 	/**
-	 * Returns the last ltw_content in the ordered set where motorcycleName = &#63;.
+	 * Returns the last ltw_content in the ordered set where companyId = &#63; and motorcycleName = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching ltw_content
 	 * @throws NoSuch_contentException if a matching ltw_content could not be found
 	 */
-	public LTW_content findByMotorcycleName_Last(
-			String motorcycleName,
+	public LTW_content findByC_M_Last(
+			long companyId, String motorcycleName,
 			com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 				orderByComparator)
 		throws NoSuch_contentException;
 
 	/**
-	 * Returns the last ltw_content in the ordered set where motorcycleName = &#63;.
+	 * Returns the last ltw_content in the ordered set where companyId = &#63; and motorcycleName = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching ltw_content, or <code>null</code> if a matching ltw_content could not be found
 	 */
-	public LTW_content fetchByMotorcycleName_Last(
-		String motorcycleName,
+	public LTW_content fetchByC_M_Last(
+		long companyId, String motorcycleName,
 		com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 			orderByComparator);
 
 	/**
-	 * Returns the ltw_contents before and after the current ltw_content in the ordered set where motorcycleName = &#63;.
+	 * Returns the ltw_contents before and after the current ltw_content in the ordered set where companyId = &#63; and motorcycleName = &#63;.
 	 *
 	 * @param ltwId the primary key of the current ltw_content
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next ltw_content
 	 * @throws NoSuch_contentException if a ltw_content with the primary key could not be found
 	 */
-	public LTW_content[] findByMotorcycleName_PrevAndNext(
-			long ltwId, String motorcycleName,
+	public LTW_content[] findByC_M_PrevAndNext(
+			long ltwId, long companyId, String motorcycleName,
 			com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 				orderByComparator)
 		throws NoSuch_contentException;
 
 	/**
-	 * Removes all the ltw_contents where motorcycleName = &#63; from the database.
+	 * Removes all the ltw_contents where companyId = &#63; and motorcycleName = &#63; from the database.
 	 *
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 */
-	public void removeByMotorcycleName(String motorcycleName);
+	public void removeByC_M(long companyId, String motorcycleName);
 
 	/**
-	 * Returns the number of ltw_contents where motorcycleName = &#63;.
+	 * Returns the number of ltw_contents where companyId = &#63; and motorcycleName = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 * @return the number of matching ltw_contents
 	 */
-	public int countByMotorcycleName(String motorcycleName);
+	public int countByC_M(long companyId, String motorcycleName);
 
 	/**
-	 * Returns all the ltw_contents where motorcycleManufacturing = &#63;.
+	 * Returns all the ltw_contents where groupId = &#63; and motorcycleManufacturing = &#63;.
 	 *
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 * @return the matching ltw_contents
 	 */
-	public java.util.List<LTW_content> findByMotorcycleManufacturing(
-		String motorcycleManufacturing);
+	public java.util.List<LTW_content> findByG_M(
+		long groupId, String motorcycleManufacturing);
 
 	/**
-	 * Returns a range of all the ltw_contents where motorcycleManufacturing = &#63;.
+	 * Returns a range of all the ltw_contents where groupId = &#63; and motorcycleManufacturing = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
 	 * @return the range of matching ltw_contents
 	 */
-	public java.util.List<LTW_content> findByMotorcycleManufacturing(
-		String motorcycleManufacturing, int start, int end);
+	public java.util.List<LTW_content> findByG_M(
+		long groupId, String motorcycleManufacturing, int start, int end);
 
 	/**
-	 * Returns an ordered range of all the ltw_contents where motorcycleManufacturing = &#63;.
+	 * Returns an ordered range of all the ltw_contents where groupId = &#63; and motorcycleManufacturing = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching ltw_contents
 	 */
-	public java.util.List<LTW_content> findByMotorcycleManufacturing(
-		String motorcycleManufacturing, int start, int end,
+	public java.util.List<LTW_content> findByG_M(
+		long groupId, String motorcycleManufacturing, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 			orderByComparator);
 
 	/**
-	 * Returns an ordered range of all the ltw_contents where motorcycleManufacturing = &#63;.
+	 * Returns an ordered range of all the ltw_contents where groupId = &#63; and motorcycleManufacturing = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
@@ -1152,236 +1178,239 @@ public interface LTW_contentPersistence extends BasePersistence<LTW_content> {
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching ltw_contents
 	 */
-	public java.util.List<LTW_content> findByMotorcycleManufacturing(
-		String motorcycleManufacturing, int start, int end,
+	public java.util.List<LTW_content> findByG_M(
+		long groupId, String motorcycleManufacturing, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 			orderByComparator,
 		boolean useFinderCache);
 
 	/**
-	 * Returns the first ltw_content in the ordered set where motorcycleManufacturing = &#63;.
+	 * Returns the first ltw_content in the ordered set where groupId = &#63; and motorcycleManufacturing = &#63;.
 	 *
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching ltw_content
 	 * @throws NoSuch_contentException if a matching ltw_content could not be found
 	 */
-	public LTW_content findByMotorcycleManufacturing_First(
-			String motorcycleManufacturing,
+	public LTW_content findByG_M_First(
+			long groupId, String motorcycleManufacturing,
 			com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 				orderByComparator)
 		throws NoSuch_contentException;
 
 	/**
-	 * Returns the first ltw_content in the ordered set where motorcycleManufacturing = &#63;.
+	 * Returns the first ltw_content in the ordered set where groupId = &#63; and motorcycleManufacturing = &#63;.
 	 *
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching ltw_content, or <code>null</code> if a matching ltw_content could not be found
 	 */
-	public LTW_content fetchByMotorcycleManufacturing_First(
-		String motorcycleManufacturing,
+	public LTW_content fetchByG_M_First(
+		long groupId, String motorcycleManufacturing,
 		com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 			orderByComparator);
 
 	/**
-	 * Returns the last ltw_content in the ordered set where motorcycleManufacturing = &#63;.
+	 * Returns the last ltw_content in the ordered set where groupId = &#63; and motorcycleManufacturing = &#63;.
 	 *
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching ltw_content
 	 * @throws NoSuch_contentException if a matching ltw_content could not be found
 	 */
-	public LTW_content findByMotorcycleManufacturing_Last(
-			String motorcycleManufacturing,
+	public LTW_content findByG_M_Last(
+			long groupId, String motorcycleManufacturing,
 			com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 				orderByComparator)
 		throws NoSuch_contentException;
 
 	/**
-	 * Returns the last ltw_content in the ordered set where motorcycleManufacturing = &#63;.
+	 * Returns the last ltw_content in the ordered set where groupId = &#63; and motorcycleManufacturing = &#63;.
 	 *
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching ltw_content, or <code>null</code> if a matching ltw_content could not be found
 	 */
-	public LTW_content fetchByMotorcycleManufacturing_Last(
-		String motorcycleManufacturing,
+	public LTW_content fetchByG_M_Last(
+		long groupId, String motorcycleManufacturing,
 		com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 			orderByComparator);
 
 	/**
-	 * Returns the ltw_contents before and after the current ltw_content in the ordered set where motorcycleManufacturing = &#63;.
+	 * Returns the ltw_contents before and after the current ltw_content in the ordered set where groupId = &#63; and motorcycleManufacturing = &#63;.
 	 *
 	 * @param ltwId the primary key of the current ltw_content
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next ltw_content
 	 * @throws NoSuch_contentException if a ltw_content with the primary key could not be found
 	 */
-	public LTW_content[] findByMotorcycleManufacturing_PrevAndNext(
-			long ltwId, String motorcycleManufacturing,
+	public LTW_content[] findByG_M_PrevAndNext(
+			long ltwId, long groupId, String motorcycleManufacturing,
 			com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 				orderByComparator)
 		throws NoSuch_contentException;
 
 	/**
-	 * Removes all the ltw_contents where motorcycleManufacturing = &#63; from the database.
+	 * Removes all the ltw_contents where groupId = &#63; and motorcycleManufacturing = &#63; from the database.
 	 *
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 */
-	public void removeByMotorcycleManufacturing(String motorcycleManufacturing);
+	public void removeByG_M(long groupId, String motorcycleManufacturing);
 
 	/**
-	 * Returns the number of ltw_contents where motorcycleManufacturing = &#63;.
+	 * Returns the number of ltw_contents where groupId = &#63; and motorcycleManufacturing = &#63;.
 	 *
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 * @return the number of matching ltw_contents
 	 */
-	public int countByMotorcycleManufacturing(String motorcycleManufacturing);
+	public int countByG_M(long groupId, String motorcycleManufacturing);
 
 	/**
-	 * Returns all the ltw_contents where motorcycleYear = &#63;.
+	 * Returns all the ltw_contents where motorcycleYear = &#63; and ltwId = &#63;.
 	 *
 	 * @param motorcycleYear the motorcycle year
+	 * @param ltwId the ltw ID
 	 * @return the matching ltw_contents
 	 */
-	public java.util.List<LTW_content> findByMotorcycleYear(int motorcycleYear);
+	public java.util.List<LTW_content> findByM_L(
+		int motorcycleYear, long ltwId);
 
 	/**
-	 * Returns a range of all the ltw_contents where motorcycleYear = &#63;.
+	 * Returns a range of all the ltw_contents where motorcycleYear = &#63; and ltwId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
 	 * @param motorcycleYear the motorcycle year
+	 * @param ltwId the ltw ID
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
 	 * @return the range of matching ltw_contents
 	 */
-	public java.util.List<LTW_content> findByMotorcycleYear(
-		int motorcycleYear, int start, int end);
+	public java.util.List<LTW_content> findByM_L(
+		int motorcycleYear, long ltwId, int start, int end);
 
 	/**
-	 * Returns an ordered range of all the ltw_contents where motorcycleYear = &#63;.
+	 * Returns an ordered range of all the ltw_contents where motorcycleYear = &#63; and ltwId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
 	 * @param motorcycleYear the motorcycle year
+	 * @param ltwId the ltw ID
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching ltw_contents
 	 */
-	public java.util.List<LTW_content> findByMotorcycleYear(
-		int motorcycleYear, int start, int end,
+	public java.util.List<LTW_content> findByM_L(
+		int motorcycleYear, long ltwId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 			orderByComparator);
 
 	/**
-	 * Returns an ordered range of all the ltw_contents where motorcycleYear = &#63;.
+	 * Returns an ordered range of all the ltw_contents where motorcycleYear = &#63; and ltwId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
 	 * @param motorcycleYear the motorcycle year
+	 * @param ltwId the ltw ID
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching ltw_contents
 	 */
-	public java.util.List<LTW_content> findByMotorcycleYear(
-		int motorcycleYear, int start, int end,
+	public java.util.List<LTW_content> findByM_L(
+		int motorcycleYear, long ltwId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 			orderByComparator,
 		boolean useFinderCache);
 
 	/**
-	 * Returns the first ltw_content in the ordered set where motorcycleYear = &#63;.
+	 * Returns the first ltw_content in the ordered set where motorcycleYear = &#63; and ltwId = &#63;.
 	 *
 	 * @param motorcycleYear the motorcycle year
+	 * @param ltwId the ltw ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching ltw_content
 	 * @throws NoSuch_contentException if a matching ltw_content could not be found
 	 */
-	public LTW_content findByMotorcycleYear_First(
-			int motorcycleYear,
+	public LTW_content findByM_L_First(
+			int motorcycleYear, long ltwId,
 			com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 				orderByComparator)
 		throws NoSuch_contentException;
 
 	/**
-	 * Returns the first ltw_content in the ordered set where motorcycleYear = &#63;.
+	 * Returns the first ltw_content in the ordered set where motorcycleYear = &#63; and ltwId = &#63;.
 	 *
 	 * @param motorcycleYear the motorcycle year
+	 * @param ltwId the ltw ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching ltw_content, or <code>null</code> if a matching ltw_content could not be found
 	 */
-	public LTW_content fetchByMotorcycleYear_First(
-		int motorcycleYear,
+	public LTW_content fetchByM_L_First(
+		int motorcycleYear, long ltwId,
 		com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 			orderByComparator);
 
 	/**
-	 * Returns the last ltw_content in the ordered set where motorcycleYear = &#63;.
+	 * Returns the last ltw_content in the ordered set where motorcycleYear = &#63; and ltwId = &#63;.
 	 *
 	 * @param motorcycleYear the motorcycle year
+	 * @param ltwId the ltw ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching ltw_content
 	 * @throws NoSuch_contentException if a matching ltw_content could not be found
 	 */
-	public LTW_content findByMotorcycleYear_Last(
-			int motorcycleYear,
+	public LTW_content findByM_L_Last(
+			int motorcycleYear, long ltwId,
 			com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 				orderByComparator)
 		throws NoSuch_contentException;
 
 	/**
-	 * Returns the last ltw_content in the ordered set where motorcycleYear = &#63;.
+	 * Returns the last ltw_content in the ordered set where motorcycleYear = &#63; and ltwId = &#63;.
 	 *
 	 * @param motorcycleYear the motorcycle year
+	 * @param ltwId the ltw ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching ltw_content, or <code>null</code> if a matching ltw_content could not be found
 	 */
-	public LTW_content fetchByMotorcycleYear_Last(
-		int motorcycleYear,
+	public LTW_content fetchByM_L_Last(
+		int motorcycleYear, long ltwId,
 		com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
 			orderByComparator);
 
 	/**
-	 * Returns the ltw_contents before and after the current ltw_content in the ordered set where motorcycleYear = &#63;.
+	 * Removes all the ltw_contents where motorcycleYear = &#63; and ltwId = &#63; from the database.
 	 *
-	 * @param ltwId the primary key of the current ltw_content
 	 * @param motorcycleYear the motorcycle year
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next ltw_content
-	 * @throws NoSuch_contentException if a ltw_content with the primary key could not be found
+	 * @param ltwId the ltw ID
 	 */
-	public LTW_content[] findByMotorcycleYear_PrevAndNext(
-			long ltwId, int motorcycleYear,
-			com.liferay.portal.kernel.util.OrderByComparator<LTW_content>
-				orderByComparator)
-		throws NoSuch_contentException;
+	public void removeByM_L(int motorcycleYear, long ltwId);
 
 	/**
-	 * Removes all the ltw_contents where motorcycleYear = &#63; from the database.
+	 * Returns the number of ltw_contents where motorcycleYear = &#63; and ltwId = &#63;.
 	 *
 	 * @param motorcycleYear the motorcycle year
-	 */
-	public void removeByMotorcycleYear(int motorcycleYear);
-
-	/**
-	 * Returns the number of ltw_contents where motorcycleYear = &#63;.
-	 *
-	 * @param motorcycleYear the motorcycle year
+	 * @param ltwId the ltw ID
 	 * @return the number of matching ltw_contents
 	 */
-	public int countByMotorcycleYear(int motorcycleYear);
+	public int countByM_L(int motorcycleYear, long ltwId);
 
 	/**
 	 * Caches the ltw_content in the entity cache if it is enabled.

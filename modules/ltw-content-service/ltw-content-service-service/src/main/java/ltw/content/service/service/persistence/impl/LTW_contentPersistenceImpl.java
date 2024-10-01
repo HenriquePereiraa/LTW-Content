@@ -2432,45 +2432,51 @@ public class LTW_contentPersistenceImpl
 	private static final String _FINDER_COLUMN_COMPANYID_COMPANYID_2 =
 		"ltw_content.companyId = ?";
 
-	private FinderPath _finderPathWithPaginationFindByUserId;
-	private FinderPath _finderPathWithoutPaginationFindByUserId;
-	private FinderPath _finderPathCountByUserId;
+	private FinderPath _finderPathWithPaginationFindByC_U;
+	private FinderPath _finderPathWithoutPaginationFindByC_U;
+	private FinderPath _finderPathCountByC_U;
 
 	/**
-	 * Returns all the ltw_contents where userId = &#63;.
+	 * Returns all the ltw_contents where companyId = &#63; and userId = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 * @return the matching ltw_contents
 	 */
 	@Override
-	public List<LTW_content> findByUserId(long userId) {
-		return findByUserId(userId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	public List<LTW_content> findByC_U(long companyId, long userId) {
+		return findByC_U(
+			companyId, userId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
 	}
 
 	/**
-	 * Returns a range of all the ltw_contents where userId = &#63;.
+	 * Returns a range of all the ltw_contents where companyId = &#63; and userId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
 	 * @return the range of matching ltw_contents
 	 */
 	@Override
-	public List<LTW_content> findByUserId(long userId, int start, int end) {
-		return findByUserId(userId, start, end, null);
+	public List<LTW_content> findByC_U(
+		long companyId, long userId, int start, int end) {
+
+		return findByC_U(companyId, userId, start, end, null);
 	}
 
 	/**
-	 * Returns an ordered range of all the ltw_contents where userId = &#63;.
+	 * Returns an ordered range of all the ltw_contents where companyId = &#63; and userId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
@@ -2478,20 +2484,22 @@ public class LTW_contentPersistenceImpl
 	 * @return the ordered range of matching ltw_contents
 	 */
 	@Override
-	public List<LTW_content> findByUserId(
-		long userId, int start, int end,
+	public List<LTW_content> findByC_U(
+		long companyId, long userId, int start, int end,
 		OrderByComparator<LTW_content> orderByComparator) {
 
-		return findByUserId(userId, start, end, orderByComparator, true);
+		return findByC_U(
+			companyId, userId, start, end, orderByComparator, true);
 	}
 
 	/**
-	 * Returns an ordered range of all the ltw_contents where userId = &#63;.
+	 * Returns an ordered range of all the ltw_contents where companyId = &#63; and userId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
@@ -2500,8 +2508,8 @@ public class LTW_contentPersistenceImpl
 	 * @return the ordered range of matching ltw_contents
 	 */
 	@Override
-	public List<LTW_content> findByUserId(
-		long userId, int start, int end,
+	public List<LTW_content> findByC_U(
+		long companyId, long userId, int start, int end,
 		OrderByComparator<LTW_content> orderByComparator,
 		boolean useFinderCache) {
 
@@ -2512,13 +2520,15 @@ public class LTW_contentPersistenceImpl
 			(orderByComparator == null)) {
 
 			if (useFinderCache) {
-				finderPath = _finderPathWithoutPaginationFindByUserId;
-				finderArgs = new Object[] {userId};
+				finderPath = _finderPathWithoutPaginationFindByC_U;
+				finderArgs = new Object[] {companyId, userId};
 			}
 		}
 		else if (useFinderCache) {
-			finderPath = _finderPathWithPaginationFindByUserId;
-			finderArgs = new Object[] {userId, start, end, orderByComparator};
+			finderPath = _finderPathWithPaginationFindByC_U;
+			finderArgs = new Object[] {
+				companyId, userId, start, end, orderByComparator
+			};
 		}
 
 		List<LTW_content> list = null;
@@ -2529,7 +2539,9 @@ public class LTW_contentPersistenceImpl
 
 			if ((list != null) && !list.isEmpty()) {
 				for (LTW_content ltw_content : list) {
-					if (userId != ltw_content.getUserId()) {
+					if ((companyId != ltw_content.getCompanyId()) ||
+						(userId != ltw_content.getUserId())) {
+
 						list = null;
 
 						break;
@@ -2543,15 +2555,17 @@ public class LTW_contentPersistenceImpl
 
 			if (orderByComparator != null) {
 				sb = new StringBundler(
-					3 + (orderByComparator.getOrderByFields().length * 2));
+					4 + (orderByComparator.getOrderByFields().length * 2));
 			}
 			else {
-				sb = new StringBundler(3);
+				sb = new StringBundler(4);
 			}
 
 			sb.append(_SQL_SELECT_LTW_CONTENT_WHERE);
 
-			sb.append(_FINDER_COLUMN_USERID_USERID_2);
+			sb.append(_FINDER_COLUMN_C_U_COMPANYID_2);
+
+			sb.append(_FINDER_COLUMN_C_U_USERID_2);
 
 			if (orderByComparator != null) {
 				appendOrderByComparator(
@@ -2571,6 +2585,8 @@ public class LTW_contentPersistenceImpl
 				Query query = session.createQuery(sql);
 
 				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(companyId);
 
 				queryPos.add(userId);
 
@@ -2595,30 +2611,35 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the first ltw_content in the ordered set where userId = &#63;.
+	 * Returns the first ltw_content in the ordered set where companyId = &#63; and userId = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching ltw_content
 	 * @throws NoSuch_contentException if a matching ltw_content could not be found
 	 */
 	@Override
-	public LTW_content findByUserId_First(
-			long userId, OrderByComparator<LTW_content> orderByComparator)
+	public LTW_content findByC_U_First(
+			long companyId, long userId,
+			OrderByComparator<LTW_content> orderByComparator)
 		throws NoSuch_contentException {
 
-		LTW_content ltw_content = fetchByUserId_First(
-			userId, orderByComparator);
+		LTW_content ltw_content = fetchByC_U_First(
+			companyId, userId, orderByComparator);
 
 		if (ltw_content != null) {
 			return ltw_content;
 		}
 
-		StringBundler sb = new StringBundler(4);
+		StringBundler sb = new StringBundler(6);
 
 		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-		sb.append("userId=");
+		sb.append("companyId=");
+		sb.append(companyId);
+
+		sb.append(", userId=");
 		sb.append(userId);
 
 		sb.append("}");
@@ -2627,17 +2648,20 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the first ltw_content in the ordered set where userId = &#63;.
+	 * Returns the first ltw_content in the ordered set where companyId = &#63; and userId = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching ltw_content, or <code>null</code> if a matching ltw_content could not be found
 	 */
 	@Override
-	public LTW_content fetchByUserId_First(
-		long userId, OrderByComparator<LTW_content> orderByComparator) {
+	public LTW_content fetchByC_U_First(
+		long companyId, long userId,
+		OrderByComparator<LTW_content> orderByComparator) {
 
-		List<LTW_content> list = findByUserId(userId, 0, 1, orderByComparator);
+		List<LTW_content> list = findByC_U(
+			companyId, userId, 0, 1, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -2647,29 +2671,35 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the last ltw_content in the ordered set where userId = &#63;.
+	 * Returns the last ltw_content in the ordered set where companyId = &#63; and userId = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching ltw_content
 	 * @throws NoSuch_contentException if a matching ltw_content could not be found
 	 */
 	@Override
-	public LTW_content findByUserId_Last(
-			long userId, OrderByComparator<LTW_content> orderByComparator)
+	public LTW_content findByC_U_Last(
+			long companyId, long userId,
+			OrderByComparator<LTW_content> orderByComparator)
 		throws NoSuch_contentException {
 
-		LTW_content ltw_content = fetchByUserId_Last(userId, orderByComparator);
+		LTW_content ltw_content = fetchByC_U_Last(
+			companyId, userId, orderByComparator);
 
 		if (ltw_content != null) {
 			return ltw_content;
 		}
 
-		StringBundler sb = new StringBundler(4);
+		StringBundler sb = new StringBundler(6);
 
 		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-		sb.append("userId=");
+		sb.append("companyId=");
+		sb.append(companyId);
+
+		sb.append(", userId=");
 		sb.append(userId);
 
 		sb.append("}");
@@ -2678,24 +2708,26 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the last ltw_content in the ordered set where userId = &#63;.
+	 * Returns the last ltw_content in the ordered set where companyId = &#63; and userId = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching ltw_content, or <code>null</code> if a matching ltw_content could not be found
 	 */
 	@Override
-	public LTW_content fetchByUserId_Last(
-		long userId, OrderByComparator<LTW_content> orderByComparator) {
+	public LTW_content fetchByC_U_Last(
+		long companyId, long userId,
+		OrderByComparator<LTW_content> orderByComparator) {
 
-		int count = countByUserId(userId);
+		int count = countByC_U(companyId, userId);
 
 		if (count == 0) {
 			return null;
 		}
 
-		List<LTW_content> list = findByUserId(
-			userId, count - 1, count, orderByComparator);
+		List<LTW_content> list = findByC_U(
+			companyId, userId, count - 1, count, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -2705,17 +2737,18 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the ltw_contents before and after the current ltw_content in the ordered set where userId = &#63;.
+	 * Returns the ltw_contents before and after the current ltw_content in the ordered set where companyId = &#63; and userId = &#63;.
 	 *
 	 * @param ltwId the primary key of the current ltw_content
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next ltw_content
 	 * @throws NoSuch_contentException if a ltw_content with the primary key could not be found
 	 */
 	@Override
-	public LTW_content[] findByUserId_PrevAndNext(
-			long ltwId, long userId,
+	public LTW_content[] findByC_U_PrevAndNext(
+			long ltwId, long companyId, long userId,
 			OrderByComparator<LTW_content> orderByComparator)
 		throws NoSuch_contentException {
 
@@ -2728,13 +2761,15 @@ public class LTW_contentPersistenceImpl
 
 			LTW_content[] array = new LTW_contentImpl[3];
 
-			array[0] = getByUserId_PrevAndNext(
-				session, ltw_content, userId, orderByComparator, true);
+			array[0] = getByC_U_PrevAndNext(
+				session, ltw_content, companyId, userId, orderByComparator,
+				true);
 
 			array[1] = ltw_content;
 
-			array[2] = getByUserId_PrevAndNext(
-				session, ltw_content, userId, orderByComparator, false);
+			array[2] = getByC_U_PrevAndNext(
+				session, ltw_content, companyId, userId, orderByComparator,
+				false);
 
 			return array;
 		}
@@ -2746,24 +2781,26 @@ public class LTW_contentPersistenceImpl
 		}
 	}
 
-	protected LTW_content getByUserId_PrevAndNext(
-		Session session, LTW_content ltw_content, long userId,
+	protected LTW_content getByC_U_PrevAndNext(
+		Session session, LTW_content ltw_content, long companyId, long userId,
 		OrderByComparator<LTW_content> orderByComparator, boolean previous) {
 
 		StringBundler sb = null;
 
 		if (orderByComparator != null) {
 			sb = new StringBundler(
-				4 + (orderByComparator.getOrderByConditionFields().length * 3) +
+				5 + (orderByComparator.getOrderByConditionFields().length * 3) +
 					(orderByComparator.getOrderByFields().length * 3));
 		}
 		else {
-			sb = new StringBundler(3);
+			sb = new StringBundler(4);
 		}
 
 		sb.append(_SQL_SELECT_LTW_CONTENT_WHERE);
 
-		sb.append(_FINDER_COLUMN_USERID_USERID_2);
+		sb.append(_FINDER_COLUMN_C_U_COMPANYID_2);
+
+		sb.append(_FINDER_COLUMN_C_U_USERID_2);
 
 		if (orderByComparator != null) {
 			String[] orderByConditionFields =
@@ -2834,6 +2871,8 @@ public class LTW_contentPersistenceImpl
 
 		QueryPos queryPos = QueryPos.getInstance(query);
 
+		queryPos.add(companyId);
+
 		queryPos.add(userId);
 
 		if (orderByComparator != null) {
@@ -2855,40 +2894,45 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Removes all the ltw_contents where userId = &#63; from the database.
+	 * Removes all the ltw_contents where companyId = &#63; and userId = &#63; from the database.
 	 *
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 */
 	@Override
-	public void removeByUserId(long userId) {
+	public void removeByC_U(long companyId, long userId) {
 		for (LTW_content ltw_content :
-				findByUserId(
-					userId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
+				findByC_U(
+					companyId, userId, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
+					null)) {
 
 			remove(ltw_content);
 		}
 	}
 
 	/**
-	 * Returns the number of ltw_contents where userId = &#63;.
+	 * Returns the number of ltw_contents where companyId = &#63; and userId = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param userId the user ID
 	 * @return the number of matching ltw_contents
 	 */
 	@Override
-	public int countByUserId(long userId) {
-		FinderPath finderPath = _finderPathCountByUserId;
+	public int countByC_U(long companyId, long userId) {
+		FinderPath finderPath = _finderPathCountByC_U;
 
-		Object[] finderArgs = new Object[] {userId};
+		Object[] finderArgs = new Object[] {companyId, userId};
 
 		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
 
 		if (count == null) {
-			StringBundler sb = new StringBundler(2);
+			StringBundler sb = new StringBundler(3);
 
 			sb.append(_SQL_COUNT_LTW_CONTENT_WHERE);
 
-			sb.append(_FINDER_COLUMN_USERID_USERID_2);
+			sb.append(_FINDER_COLUMN_C_U_COMPANYID_2);
+
+			sb.append(_FINDER_COLUMN_C_U_USERID_2);
 
 			String sql = sb.toString();
 
@@ -2900,6 +2944,8 @@ public class LTW_contentPersistenceImpl
 				Query query = session.createQuery(sql);
 
 				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(companyId);
 
 				queryPos.add(userId);
 
@@ -2918,12 +2964,15 @@ public class LTW_contentPersistenceImpl
 		return count.intValue();
 	}
 
-	private static final String _FINDER_COLUMN_USERID_USERID_2 =
+	private static final String _FINDER_COLUMN_C_U_COMPANYID_2 =
+		"ltw_content.companyId = ? AND ";
+
+	private static final String _FINDER_COLUMN_C_U_USERID_2 =
 		"ltw_content.userId = ?";
 
-	private FinderPath _finderPathWithPaginationFindByUserName;
-	private FinderPath _finderPathWithoutPaginationFindByUserName;
-	private FinderPath _finderPathCountByUserName;
+	private FinderPath _finderPathWithPaginationFindByU;
+	private FinderPath _finderPathWithoutPaginationFindByU;
+	private FinderPath _finderPathCountByU;
 
 	/**
 	 * Returns all the ltw_contents where userName = &#63;.
@@ -2932,9 +2981,8 @@ public class LTW_contentPersistenceImpl
 	 * @return the matching ltw_contents
 	 */
 	@Override
-	public List<LTW_content> findByUserName(String userName) {
-		return findByUserName(
-			userName, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	public List<LTW_content> findByU(String userName) {
+		return findByU(userName, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
 	}
 
 	/**
@@ -2950,10 +2998,8 @@ public class LTW_contentPersistenceImpl
 	 * @return the range of matching ltw_contents
 	 */
 	@Override
-	public List<LTW_content> findByUserName(
-		String userName, int start, int end) {
-
-		return findByUserName(userName, start, end, null);
+	public List<LTW_content> findByU(String userName, int start, int end) {
+		return findByU(userName, start, end, null);
 	}
 
 	/**
@@ -2970,11 +3016,11 @@ public class LTW_contentPersistenceImpl
 	 * @return the ordered range of matching ltw_contents
 	 */
 	@Override
-	public List<LTW_content> findByUserName(
+	public List<LTW_content> findByU(
 		String userName, int start, int end,
 		OrderByComparator<LTW_content> orderByComparator) {
 
-		return findByUserName(userName, start, end, orderByComparator, true);
+		return findByU(userName, start, end, orderByComparator, true);
 	}
 
 	/**
@@ -2992,7 +3038,7 @@ public class LTW_contentPersistenceImpl
 	 * @return the ordered range of matching ltw_contents
 	 */
 	@Override
-	public List<LTW_content> findByUserName(
+	public List<LTW_content> findByU(
 		String userName, int start, int end,
 		OrderByComparator<LTW_content> orderByComparator,
 		boolean useFinderCache) {
@@ -3006,12 +3052,12 @@ public class LTW_contentPersistenceImpl
 			(orderByComparator == null)) {
 
 			if (useFinderCache) {
-				finderPath = _finderPathWithoutPaginationFindByUserName;
+				finderPath = _finderPathWithoutPaginationFindByU;
 				finderArgs = new Object[] {userName};
 			}
 		}
 		else if (useFinderCache) {
-			finderPath = _finderPathWithPaginationFindByUserName;
+			finderPath = _finderPathWithPaginationFindByU;
 			finderArgs = new Object[] {userName, start, end, orderByComparator};
 		}
 
@@ -3048,12 +3094,12 @@ public class LTW_contentPersistenceImpl
 			boolean bindUserName = false;
 
 			if (userName.isEmpty()) {
-				sb.append(_FINDER_COLUMN_USERNAME_USERNAME_3);
+				sb.append(_FINDER_COLUMN_U_USERNAME_3);
 			}
 			else {
 				bindUserName = true;
 
-				sb.append(_FINDER_COLUMN_USERNAME_USERNAME_2);
+				sb.append(_FINDER_COLUMN_U_USERNAME_2);
 			}
 
 			if (orderByComparator != null) {
@@ -3108,12 +3154,11 @@ public class LTW_contentPersistenceImpl
 	 * @throws NoSuch_contentException if a matching ltw_content could not be found
 	 */
 	@Override
-	public LTW_content findByUserName_First(
+	public LTW_content findByU_First(
 			String userName, OrderByComparator<LTW_content> orderByComparator)
 		throws NoSuch_contentException {
 
-		LTW_content ltw_content = fetchByUserName_First(
-			userName, orderByComparator);
+		LTW_content ltw_content = fetchByU_First(userName, orderByComparator);
 
 		if (ltw_content != null) {
 			return ltw_content;
@@ -3139,11 +3184,10 @@ public class LTW_contentPersistenceImpl
 	 * @return the first matching ltw_content, or <code>null</code> if a matching ltw_content could not be found
 	 */
 	@Override
-	public LTW_content fetchByUserName_First(
+	public LTW_content fetchByU_First(
 		String userName, OrderByComparator<LTW_content> orderByComparator) {
 
-		List<LTW_content> list = findByUserName(
-			userName, 0, 1, orderByComparator);
+		List<LTW_content> list = findByU(userName, 0, 1, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -3161,12 +3205,11 @@ public class LTW_contentPersistenceImpl
 	 * @throws NoSuch_contentException if a matching ltw_content could not be found
 	 */
 	@Override
-	public LTW_content findByUserName_Last(
+	public LTW_content findByU_Last(
 			String userName, OrderByComparator<LTW_content> orderByComparator)
 		throws NoSuch_contentException {
 
-		LTW_content ltw_content = fetchByUserName_Last(
-			userName, orderByComparator);
+		LTW_content ltw_content = fetchByU_Last(userName, orderByComparator);
 
 		if (ltw_content != null) {
 			return ltw_content;
@@ -3192,16 +3235,16 @@ public class LTW_contentPersistenceImpl
 	 * @return the last matching ltw_content, or <code>null</code> if a matching ltw_content could not be found
 	 */
 	@Override
-	public LTW_content fetchByUserName_Last(
+	public LTW_content fetchByU_Last(
 		String userName, OrderByComparator<LTW_content> orderByComparator) {
 
-		int count = countByUserName(userName);
+		int count = countByU(userName);
 
 		if (count == 0) {
 			return null;
 		}
 
-		List<LTW_content> list = findByUserName(
+		List<LTW_content> list = findByU(
 			userName, count - 1, count, orderByComparator);
 
 		if (!list.isEmpty()) {
@@ -3221,7 +3264,7 @@ public class LTW_contentPersistenceImpl
 	 * @throws NoSuch_contentException if a ltw_content with the primary key could not be found
 	 */
 	@Override
-	public LTW_content[] findByUserName_PrevAndNext(
+	public LTW_content[] findByU_PrevAndNext(
 			long ltwId, String userName,
 			OrderByComparator<LTW_content> orderByComparator)
 		throws NoSuch_contentException {
@@ -3237,12 +3280,12 @@ public class LTW_contentPersistenceImpl
 
 			LTW_content[] array = new LTW_contentImpl[3];
 
-			array[0] = getByUserName_PrevAndNext(
+			array[0] = getByU_PrevAndNext(
 				session, ltw_content, userName, orderByComparator, true);
 
 			array[1] = ltw_content;
 
-			array[2] = getByUserName_PrevAndNext(
+			array[2] = getByU_PrevAndNext(
 				session, ltw_content, userName, orderByComparator, false);
 
 			return array;
@@ -3255,7 +3298,7 @@ public class LTW_contentPersistenceImpl
 		}
 	}
 
-	protected LTW_content getByUserName_PrevAndNext(
+	protected LTW_content getByU_PrevAndNext(
 		Session session, LTW_content ltw_content, String userName,
 		OrderByComparator<LTW_content> orderByComparator, boolean previous) {
 
@@ -3275,12 +3318,12 @@ public class LTW_contentPersistenceImpl
 		boolean bindUserName = false;
 
 		if (userName.isEmpty()) {
-			sb.append(_FINDER_COLUMN_USERNAME_USERNAME_3);
+			sb.append(_FINDER_COLUMN_U_USERNAME_3);
 		}
 		else {
 			bindUserName = true;
 
-			sb.append(_FINDER_COLUMN_USERNAME_USERNAME_2);
+			sb.append(_FINDER_COLUMN_U_USERNAME_2);
 		}
 
 		if (orderByComparator != null) {
@@ -3380,10 +3423,9 @@ public class LTW_contentPersistenceImpl
 	 * @param userName the user name
 	 */
 	@Override
-	public void removeByUserName(String userName) {
+	public void removeByU(String userName) {
 		for (LTW_content ltw_content :
-				findByUserName(
-					userName, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
+				findByU(userName, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
 
 			remove(ltw_content);
 		}
@@ -3396,10 +3438,10 @@ public class LTW_contentPersistenceImpl
 	 * @return the number of matching ltw_contents
 	 */
 	@Override
-	public int countByUserName(String userName) {
+	public int countByU(String userName) {
 		userName = Objects.toString(userName, "");
 
-		FinderPath finderPath = _finderPathCountByUserName;
+		FinderPath finderPath = _finderPathCountByU;
 
 		Object[] finderArgs = new Object[] {userName};
 
@@ -3413,12 +3455,12 @@ public class LTW_contentPersistenceImpl
 			boolean bindUserName = false;
 
 			if (userName.isEmpty()) {
-				sb.append(_FINDER_COLUMN_USERNAME_USERNAME_3);
+				sb.append(_FINDER_COLUMN_U_USERNAME_3);
 			}
 			else {
 				bindUserName = true;
 
-				sb.append(_FINDER_COLUMN_USERNAME_USERNAME_2);
+				sb.append(_FINDER_COLUMN_U_USERNAME_2);
 			}
 
 			String sql = sb.toString();
@@ -3451,54 +3493,58 @@ public class LTW_contentPersistenceImpl
 		return count.intValue();
 	}
 
-	private static final String _FINDER_COLUMN_USERNAME_USERNAME_2 =
+	private static final String _FINDER_COLUMN_U_USERNAME_2 =
 		"ltw_content.userName = ?";
 
-	private static final String _FINDER_COLUMN_USERNAME_USERNAME_3 =
+	private static final String _FINDER_COLUMN_U_USERNAME_3 =
 		"(ltw_content.userName IS NULL OR ltw_content.userName = '')";
 
-	private FinderPath _finderPathWithPaginationFindByMotorcycleName;
-	private FinderPath _finderPathWithoutPaginationFindByMotorcycleName;
-	private FinderPath _finderPathCountByMotorcycleName;
+	private FinderPath _finderPathWithPaginationFindByC_M;
+	private FinderPath _finderPathWithoutPaginationFindByC_M;
+	private FinderPath _finderPathCountByC_M;
 
 	/**
-	 * Returns all the ltw_contents where motorcycleName = &#63;.
+	 * Returns all the ltw_contents where companyId = &#63; and motorcycleName = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 * @return the matching ltw_contents
 	 */
 	@Override
-	public List<LTW_content> findByMotorcycleName(String motorcycleName) {
-		return findByMotorcycleName(
-			motorcycleName, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	public List<LTW_content> findByC_M(long companyId, String motorcycleName) {
+		return findByC_M(
+			companyId, motorcycleName, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
+			null);
 	}
 
 	/**
-	 * Returns a range of all the ltw_contents where motorcycleName = &#63;.
+	 * Returns a range of all the ltw_contents where companyId = &#63; and motorcycleName = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
 	 * @return the range of matching ltw_contents
 	 */
 	@Override
-	public List<LTW_content> findByMotorcycleName(
-		String motorcycleName, int start, int end) {
+	public List<LTW_content> findByC_M(
+		long companyId, String motorcycleName, int start, int end) {
 
-		return findByMotorcycleName(motorcycleName, start, end, null);
+		return findByC_M(companyId, motorcycleName, start, end, null);
 	}
 
 	/**
-	 * Returns an ordered range of all the ltw_contents where motorcycleName = &#63;.
+	 * Returns an ordered range of all the ltw_contents where companyId = &#63; and motorcycleName = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
@@ -3506,21 +3552,22 @@ public class LTW_contentPersistenceImpl
 	 * @return the ordered range of matching ltw_contents
 	 */
 	@Override
-	public List<LTW_content> findByMotorcycleName(
-		String motorcycleName, int start, int end,
+	public List<LTW_content> findByC_M(
+		long companyId, String motorcycleName, int start, int end,
 		OrderByComparator<LTW_content> orderByComparator) {
 
-		return findByMotorcycleName(
-			motorcycleName, start, end, orderByComparator, true);
+		return findByC_M(
+			companyId, motorcycleName, start, end, orderByComparator, true);
 	}
 
 	/**
-	 * Returns an ordered range of all the ltw_contents where motorcycleName = &#63;.
+	 * Returns an ordered range of all the ltw_contents where companyId = &#63; and motorcycleName = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
@@ -3529,8 +3576,8 @@ public class LTW_contentPersistenceImpl
 	 * @return the ordered range of matching ltw_contents
 	 */
 	@Override
-	public List<LTW_content> findByMotorcycleName(
-		String motorcycleName, int start, int end,
+	public List<LTW_content> findByC_M(
+		long companyId, String motorcycleName, int start, int end,
 		OrderByComparator<LTW_content> orderByComparator,
 		boolean useFinderCache) {
 
@@ -3543,14 +3590,14 @@ public class LTW_contentPersistenceImpl
 			(orderByComparator == null)) {
 
 			if (useFinderCache) {
-				finderPath = _finderPathWithoutPaginationFindByMotorcycleName;
-				finderArgs = new Object[] {motorcycleName};
+				finderPath = _finderPathWithoutPaginationFindByC_M;
+				finderArgs = new Object[] {companyId, motorcycleName};
 			}
 		}
 		else if (useFinderCache) {
-			finderPath = _finderPathWithPaginationFindByMotorcycleName;
+			finderPath = _finderPathWithPaginationFindByC_M;
 			finderArgs = new Object[] {
-				motorcycleName, start, end, orderByComparator
+				companyId, motorcycleName, start, end, orderByComparator
 			};
 		}
 
@@ -3562,7 +3609,8 @@ public class LTW_contentPersistenceImpl
 
 			if ((list != null) && !list.isEmpty()) {
 				for (LTW_content ltw_content : list) {
-					if (!motorcycleName.equals(
+					if ((companyId != ltw_content.getCompanyId()) ||
+						!motorcycleName.equals(
 							ltw_content.getMotorcycleName())) {
 
 						list = null;
@@ -3578,23 +3626,25 @@ public class LTW_contentPersistenceImpl
 
 			if (orderByComparator != null) {
 				sb = new StringBundler(
-					3 + (orderByComparator.getOrderByFields().length * 2));
+					4 + (orderByComparator.getOrderByFields().length * 2));
 			}
 			else {
-				sb = new StringBundler(3);
+				sb = new StringBundler(4);
 			}
 
 			sb.append(_SQL_SELECT_LTW_CONTENT_WHERE);
 
+			sb.append(_FINDER_COLUMN_C_M_COMPANYID_2);
+
 			boolean bindMotorcycleName = false;
 
 			if (motorcycleName.isEmpty()) {
-				sb.append(_FINDER_COLUMN_MOTORCYCLENAME_MOTORCYCLENAME_3);
+				sb.append(_FINDER_COLUMN_C_M_MOTORCYCLENAME_3);
 			}
 			else {
 				bindMotorcycleName = true;
 
-				sb.append(_FINDER_COLUMN_MOTORCYCLENAME_MOTORCYCLENAME_2);
+				sb.append(_FINDER_COLUMN_C_M_MOTORCYCLENAME_2);
 			}
 
 			if (orderByComparator != null) {
@@ -3615,6 +3665,8 @@ public class LTW_contentPersistenceImpl
 				Query query = session.createQuery(sql);
 
 				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(companyId);
 
 				if (bindMotorcycleName) {
 					queryPos.add(motorcycleName);
@@ -3641,31 +3693,35 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the first ltw_content in the ordered set where motorcycleName = &#63;.
+	 * Returns the first ltw_content in the ordered set where companyId = &#63; and motorcycleName = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching ltw_content
 	 * @throws NoSuch_contentException if a matching ltw_content could not be found
 	 */
 	@Override
-	public LTW_content findByMotorcycleName_First(
-			String motorcycleName,
+	public LTW_content findByC_M_First(
+			long companyId, String motorcycleName,
 			OrderByComparator<LTW_content> orderByComparator)
 		throws NoSuch_contentException {
 
-		LTW_content ltw_content = fetchByMotorcycleName_First(
-			motorcycleName, orderByComparator);
+		LTW_content ltw_content = fetchByC_M_First(
+			companyId, motorcycleName, orderByComparator);
 
 		if (ltw_content != null) {
 			return ltw_content;
 		}
 
-		StringBundler sb = new StringBundler(4);
+		StringBundler sb = new StringBundler(6);
 
 		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-		sb.append("motorcycleName=");
+		sb.append("companyId=");
+		sb.append(companyId);
+
+		sb.append(", motorcycleName=");
 		sb.append(motorcycleName);
 
 		sb.append("}");
@@ -3674,19 +3730,20 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the first ltw_content in the ordered set where motorcycleName = &#63;.
+	 * Returns the first ltw_content in the ordered set where companyId = &#63; and motorcycleName = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching ltw_content, or <code>null</code> if a matching ltw_content could not be found
 	 */
 	@Override
-	public LTW_content fetchByMotorcycleName_First(
-		String motorcycleName,
+	public LTW_content fetchByC_M_First(
+		long companyId, String motorcycleName,
 		OrderByComparator<LTW_content> orderByComparator) {
 
-		List<LTW_content> list = findByMotorcycleName(
-			motorcycleName, 0, 1, orderByComparator);
+		List<LTW_content> list = findByC_M(
+			companyId, motorcycleName, 0, 1, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -3696,31 +3753,35 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the last ltw_content in the ordered set where motorcycleName = &#63;.
+	 * Returns the last ltw_content in the ordered set where companyId = &#63; and motorcycleName = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching ltw_content
 	 * @throws NoSuch_contentException if a matching ltw_content could not be found
 	 */
 	@Override
-	public LTW_content findByMotorcycleName_Last(
-			String motorcycleName,
+	public LTW_content findByC_M_Last(
+			long companyId, String motorcycleName,
 			OrderByComparator<LTW_content> orderByComparator)
 		throws NoSuch_contentException {
 
-		LTW_content ltw_content = fetchByMotorcycleName_Last(
-			motorcycleName, orderByComparator);
+		LTW_content ltw_content = fetchByC_M_Last(
+			companyId, motorcycleName, orderByComparator);
 
 		if (ltw_content != null) {
 			return ltw_content;
 		}
 
-		StringBundler sb = new StringBundler(4);
+		StringBundler sb = new StringBundler(6);
 
 		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-		sb.append("motorcycleName=");
+		sb.append("companyId=");
+		sb.append(companyId);
+
+		sb.append(", motorcycleName=");
 		sb.append(motorcycleName);
 
 		sb.append("}");
@@ -3729,25 +3790,26 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the last ltw_content in the ordered set where motorcycleName = &#63;.
+	 * Returns the last ltw_content in the ordered set where companyId = &#63; and motorcycleName = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching ltw_content, or <code>null</code> if a matching ltw_content could not be found
 	 */
 	@Override
-	public LTW_content fetchByMotorcycleName_Last(
-		String motorcycleName,
+	public LTW_content fetchByC_M_Last(
+		long companyId, String motorcycleName,
 		OrderByComparator<LTW_content> orderByComparator) {
 
-		int count = countByMotorcycleName(motorcycleName);
+		int count = countByC_M(companyId, motorcycleName);
 
 		if (count == 0) {
 			return null;
 		}
 
-		List<LTW_content> list = findByMotorcycleName(
-			motorcycleName, count - 1, count, orderByComparator);
+		List<LTW_content> list = findByC_M(
+			companyId, motorcycleName, count - 1, count, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -3757,17 +3819,18 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the ltw_contents before and after the current ltw_content in the ordered set where motorcycleName = &#63;.
+	 * Returns the ltw_contents before and after the current ltw_content in the ordered set where companyId = &#63; and motorcycleName = &#63;.
 	 *
 	 * @param ltwId the primary key of the current ltw_content
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next ltw_content
 	 * @throws NoSuch_contentException if a ltw_content with the primary key could not be found
 	 */
 	@Override
-	public LTW_content[] findByMotorcycleName_PrevAndNext(
-			long ltwId, String motorcycleName,
+	public LTW_content[] findByC_M_PrevAndNext(
+			long ltwId, long companyId, String motorcycleName,
 			OrderByComparator<LTW_content> orderByComparator)
 		throws NoSuch_contentException {
 
@@ -3782,13 +3845,15 @@ public class LTW_contentPersistenceImpl
 
 			LTW_content[] array = new LTW_contentImpl[3];
 
-			array[0] = getByMotorcycleName_PrevAndNext(
-				session, ltw_content, motorcycleName, orderByComparator, true);
+			array[0] = getByC_M_PrevAndNext(
+				session, ltw_content, companyId, motorcycleName,
+				orderByComparator, true);
 
 			array[1] = ltw_content;
 
-			array[2] = getByMotorcycleName_PrevAndNext(
-				session, ltw_content, motorcycleName, orderByComparator, false);
+			array[2] = getByC_M_PrevAndNext(
+				session, ltw_content, companyId, motorcycleName,
+				orderByComparator, false);
 
 			return array;
 		}
@@ -3800,32 +3865,35 @@ public class LTW_contentPersistenceImpl
 		}
 	}
 
-	protected LTW_content getByMotorcycleName_PrevAndNext(
-		Session session, LTW_content ltw_content, String motorcycleName,
-		OrderByComparator<LTW_content> orderByComparator, boolean previous) {
+	protected LTW_content getByC_M_PrevAndNext(
+		Session session, LTW_content ltw_content, long companyId,
+		String motorcycleName, OrderByComparator<LTW_content> orderByComparator,
+		boolean previous) {
 
 		StringBundler sb = null;
 
 		if (orderByComparator != null) {
 			sb = new StringBundler(
-				4 + (orderByComparator.getOrderByConditionFields().length * 3) +
+				5 + (orderByComparator.getOrderByConditionFields().length * 3) +
 					(orderByComparator.getOrderByFields().length * 3));
 		}
 		else {
-			sb = new StringBundler(3);
+			sb = new StringBundler(4);
 		}
 
 		sb.append(_SQL_SELECT_LTW_CONTENT_WHERE);
 
+		sb.append(_FINDER_COLUMN_C_M_COMPANYID_2);
+
 		boolean bindMotorcycleName = false;
 
 		if (motorcycleName.isEmpty()) {
-			sb.append(_FINDER_COLUMN_MOTORCYCLENAME_MOTORCYCLENAME_3);
+			sb.append(_FINDER_COLUMN_C_M_MOTORCYCLENAME_3);
 		}
 		else {
 			bindMotorcycleName = true;
 
-			sb.append(_FINDER_COLUMN_MOTORCYCLENAME_MOTORCYCLENAME_2);
+			sb.append(_FINDER_COLUMN_C_M_MOTORCYCLENAME_2);
 		}
 
 		if (orderByComparator != null) {
@@ -3896,6 +3964,8 @@ public class LTW_contentPersistenceImpl
 		query.setMaxResults(2);
 
 		QueryPos queryPos = QueryPos.getInstance(query);
+
+		queryPos.add(companyId);
 
 		if (bindMotorcycleName) {
 			queryPos.add(motorcycleName);
@@ -3920,51 +3990,55 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Removes all the ltw_contents where motorcycleName = &#63; from the database.
+	 * Removes all the ltw_contents where companyId = &#63; and motorcycleName = &#63; from the database.
 	 *
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 */
 	@Override
-	public void removeByMotorcycleName(String motorcycleName) {
+	public void removeByC_M(long companyId, String motorcycleName) {
 		for (LTW_content ltw_content :
-				findByMotorcycleName(
-					motorcycleName, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
-					null)) {
+				findByC_M(
+					companyId, motorcycleName, QueryUtil.ALL_POS,
+					QueryUtil.ALL_POS, null)) {
 
 			remove(ltw_content);
 		}
 	}
 
 	/**
-	 * Returns the number of ltw_contents where motorcycleName = &#63;.
+	 * Returns the number of ltw_contents where companyId = &#63; and motorcycleName = &#63;.
 	 *
+	 * @param companyId the company ID
 	 * @param motorcycleName the motorcycle name
 	 * @return the number of matching ltw_contents
 	 */
 	@Override
-	public int countByMotorcycleName(String motorcycleName) {
+	public int countByC_M(long companyId, String motorcycleName) {
 		motorcycleName = Objects.toString(motorcycleName, "");
 
-		FinderPath finderPath = _finderPathCountByMotorcycleName;
+		FinderPath finderPath = _finderPathCountByC_M;
 
-		Object[] finderArgs = new Object[] {motorcycleName};
+		Object[] finderArgs = new Object[] {companyId, motorcycleName};
 
 		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
 
 		if (count == null) {
-			StringBundler sb = new StringBundler(2);
+			StringBundler sb = new StringBundler(3);
 
 			sb.append(_SQL_COUNT_LTW_CONTENT_WHERE);
+
+			sb.append(_FINDER_COLUMN_C_M_COMPANYID_2);
 
 			boolean bindMotorcycleName = false;
 
 			if (motorcycleName.isEmpty()) {
-				sb.append(_FINDER_COLUMN_MOTORCYCLENAME_MOTORCYCLENAME_3);
+				sb.append(_FINDER_COLUMN_C_M_MOTORCYCLENAME_3);
 			}
 			else {
 				bindMotorcycleName = true;
 
-				sb.append(_FINDER_COLUMN_MOTORCYCLENAME_MOTORCYCLENAME_2);
+				sb.append(_FINDER_COLUMN_C_M_MOTORCYCLENAME_2);
 			}
 
 			String sql = sb.toString();
@@ -3977,6 +4051,8 @@ public class LTW_contentPersistenceImpl
 				Query query = session.createQuery(sql);
 
 				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(companyId);
 
 				if (bindMotorcycleName) {
 					queryPos.add(motorcycleName);
@@ -3997,59 +4073,63 @@ public class LTW_contentPersistenceImpl
 		return count.intValue();
 	}
 
-	private static final String _FINDER_COLUMN_MOTORCYCLENAME_MOTORCYCLENAME_2 =
+	private static final String _FINDER_COLUMN_C_M_COMPANYID_2 =
+		"ltw_content.companyId = ? AND ";
+
+	private static final String _FINDER_COLUMN_C_M_MOTORCYCLENAME_2 =
 		"ltw_content.motorcycleName = ?";
 
-	private static final String _FINDER_COLUMN_MOTORCYCLENAME_MOTORCYCLENAME_3 =
+	private static final String _FINDER_COLUMN_C_M_MOTORCYCLENAME_3 =
 		"(ltw_content.motorcycleName IS NULL OR ltw_content.motorcycleName = '')";
 
-	private FinderPath _finderPathWithPaginationFindByMotorcycleManufacturing;
-	private FinderPath
-		_finderPathWithoutPaginationFindByMotorcycleManufacturing;
-	private FinderPath _finderPathCountByMotorcycleManufacturing;
+	private FinderPath _finderPathWithPaginationFindByG_M;
+	private FinderPath _finderPathWithoutPaginationFindByG_M;
+	private FinderPath _finderPathCountByG_M;
 
 	/**
-	 * Returns all the ltw_contents where motorcycleManufacturing = &#63;.
+	 * Returns all the ltw_contents where groupId = &#63; and motorcycleManufacturing = &#63;.
 	 *
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 * @return the matching ltw_contents
 	 */
 	@Override
-	public List<LTW_content> findByMotorcycleManufacturing(
-		String motorcycleManufacturing) {
+	public List<LTW_content> findByG_M(
+		long groupId, String motorcycleManufacturing) {
 
-		return findByMotorcycleManufacturing(
-			motorcycleManufacturing, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
-			null);
+		return findByG_M(
+			groupId, motorcycleManufacturing, QueryUtil.ALL_POS,
+			QueryUtil.ALL_POS, null);
 	}
 
 	/**
-	 * Returns a range of all the ltw_contents where motorcycleManufacturing = &#63;.
+	 * Returns a range of all the ltw_contents where groupId = &#63; and motorcycleManufacturing = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
 	 * @return the range of matching ltw_contents
 	 */
 	@Override
-	public List<LTW_content> findByMotorcycleManufacturing(
-		String motorcycleManufacturing, int start, int end) {
+	public List<LTW_content> findByG_M(
+		long groupId, String motorcycleManufacturing, int start, int end) {
 
-		return findByMotorcycleManufacturing(
-			motorcycleManufacturing, start, end, null);
+		return findByG_M(groupId, motorcycleManufacturing, start, end, null);
 	}
 
 	/**
-	 * Returns an ordered range of all the ltw_contents where motorcycleManufacturing = &#63;.
+	 * Returns an ordered range of all the ltw_contents where groupId = &#63; and motorcycleManufacturing = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
@@ -4057,21 +4137,23 @@ public class LTW_contentPersistenceImpl
 	 * @return the ordered range of matching ltw_contents
 	 */
 	@Override
-	public List<LTW_content> findByMotorcycleManufacturing(
-		String motorcycleManufacturing, int start, int end,
+	public List<LTW_content> findByG_M(
+		long groupId, String motorcycleManufacturing, int start, int end,
 		OrderByComparator<LTW_content> orderByComparator) {
 
-		return findByMotorcycleManufacturing(
-			motorcycleManufacturing, start, end, orderByComparator, true);
+		return findByG_M(
+			groupId, motorcycleManufacturing, start, end, orderByComparator,
+			true);
 	}
 
 	/**
-	 * Returns an ordered range of all the ltw_contents where motorcycleManufacturing = &#63;.
+	 * Returns an ordered range of all the ltw_contents where groupId = &#63; and motorcycleManufacturing = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
@@ -4080,8 +4162,8 @@ public class LTW_contentPersistenceImpl
 	 * @return the ordered range of matching ltw_contents
 	 */
 	@Override
-	public List<LTW_content> findByMotorcycleManufacturing(
-		String motorcycleManufacturing, int start, int end,
+	public List<LTW_content> findByG_M(
+		long groupId, String motorcycleManufacturing, int start, int end,
 		OrderByComparator<LTW_content> orderByComparator,
 		boolean useFinderCache) {
 
@@ -4094,15 +4176,14 @@ public class LTW_contentPersistenceImpl
 			(orderByComparator == null)) {
 
 			if (useFinderCache) {
-				finderPath =
-					_finderPathWithoutPaginationFindByMotorcycleManufacturing;
-				finderArgs = new Object[] {motorcycleManufacturing};
+				finderPath = _finderPathWithoutPaginationFindByG_M;
+				finderArgs = new Object[] {groupId, motorcycleManufacturing};
 			}
 		}
 		else if (useFinderCache) {
-			finderPath = _finderPathWithPaginationFindByMotorcycleManufacturing;
+			finderPath = _finderPathWithPaginationFindByG_M;
 			finderArgs = new Object[] {
-				motorcycleManufacturing, start, end, orderByComparator
+				groupId, motorcycleManufacturing, start, end, orderByComparator
 			};
 		}
 
@@ -4114,7 +4195,8 @@ public class LTW_contentPersistenceImpl
 
 			if ((list != null) && !list.isEmpty()) {
 				for (LTW_content ltw_content : list) {
-					if (!motorcycleManufacturing.equals(
+					if ((groupId != ltw_content.getGroupId()) ||
+						!motorcycleManufacturing.equals(
 							ltw_content.getMotorcycleManufacturing())) {
 
 						list = null;
@@ -4130,25 +4212,25 @@ public class LTW_contentPersistenceImpl
 
 			if (orderByComparator != null) {
 				sb = new StringBundler(
-					3 + (orderByComparator.getOrderByFields().length * 2));
+					4 + (orderByComparator.getOrderByFields().length * 2));
 			}
 			else {
-				sb = new StringBundler(3);
+				sb = new StringBundler(4);
 			}
 
 			sb.append(_SQL_SELECT_LTW_CONTENT_WHERE);
 
+			sb.append(_FINDER_COLUMN_G_M_GROUPID_2);
+
 			boolean bindMotorcycleManufacturing = false;
 
 			if (motorcycleManufacturing.isEmpty()) {
-				sb.append(
-					_FINDER_COLUMN_MOTORCYCLEMANUFACTURING_MOTORCYCLEMANUFACTURING_3);
+				sb.append(_FINDER_COLUMN_G_M_MOTORCYCLEMANUFACTURING_3);
 			}
 			else {
 				bindMotorcycleManufacturing = true;
 
-				sb.append(
-					_FINDER_COLUMN_MOTORCYCLEMANUFACTURING_MOTORCYCLEMANUFACTURING_2);
+				sb.append(_FINDER_COLUMN_G_M_MOTORCYCLEMANUFACTURING_2);
 			}
 
 			if (orderByComparator != null) {
@@ -4169,6 +4251,8 @@ public class LTW_contentPersistenceImpl
 				Query query = session.createQuery(sql);
 
 				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(groupId);
 
 				if (bindMotorcycleManufacturing) {
 					queryPos.add(motorcycleManufacturing);
@@ -4195,31 +4279,35 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the first ltw_content in the ordered set where motorcycleManufacturing = &#63;.
+	 * Returns the first ltw_content in the ordered set where groupId = &#63; and motorcycleManufacturing = &#63;.
 	 *
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching ltw_content
 	 * @throws NoSuch_contentException if a matching ltw_content could not be found
 	 */
 	@Override
-	public LTW_content findByMotorcycleManufacturing_First(
-			String motorcycleManufacturing,
+	public LTW_content findByG_M_First(
+			long groupId, String motorcycleManufacturing,
 			OrderByComparator<LTW_content> orderByComparator)
 		throws NoSuch_contentException {
 
-		LTW_content ltw_content = fetchByMotorcycleManufacturing_First(
-			motorcycleManufacturing, orderByComparator);
+		LTW_content ltw_content = fetchByG_M_First(
+			groupId, motorcycleManufacturing, orderByComparator);
 
 		if (ltw_content != null) {
 			return ltw_content;
 		}
 
-		StringBundler sb = new StringBundler(4);
+		StringBundler sb = new StringBundler(6);
 
 		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-		sb.append("motorcycleManufacturing=");
+		sb.append("groupId=");
+		sb.append(groupId);
+
+		sb.append(", motorcycleManufacturing=");
 		sb.append(motorcycleManufacturing);
 
 		sb.append("}");
@@ -4228,19 +4316,20 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the first ltw_content in the ordered set where motorcycleManufacturing = &#63;.
+	 * Returns the first ltw_content in the ordered set where groupId = &#63; and motorcycleManufacturing = &#63;.
 	 *
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching ltw_content, or <code>null</code> if a matching ltw_content could not be found
 	 */
 	@Override
-	public LTW_content fetchByMotorcycleManufacturing_First(
-		String motorcycleManufacturing,
+	public LTW_content fetchByG_M_First(
+		long groupId, String motorcycleManufacturing,
 		OrderByComparator<LTW_content> orderByComparator) {
 
-		List<LTW_content> list = findByMotorcycleManufacturing(
-			motorcycleManufacturing, 0, 1, orderByComparator);
+		List<LTW_content> list = findByG_M(
+			groupId, motorcycleManufacturing, 0, 1, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -4250,31 +4339,35 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the last ltw_content in the ordered set where motorcycleManufacturing = &#63;.
+	 * Returns the last ltw_content in the ordered set where groupId = &#63; and motorcycleManufacturing = &#63;.
 	 *
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching ltw_content
 	 * @throws NoSuch_contentException if a matching ltw_content could not be found
 	 */
 	@Override
-	public LTW_content findByMotorcycleManufacturing_Last(
-			String motorcycleManufacturing,
+	public LTW_content findByG_M_Last(
+			long groupId, String motorcycleManufacturing,
 			OrderByComparator<LTW_content> orderByComparator)
 		throws NoSuch_contentException {
 
-		LTW_content ltw_content = fetchByMotorcycleManufacturing_Last(
-			motorcycleManufacturing, orderByComparator);
+		LTW_content ltw_content = fetchByG_M_Last(
+			groupId, motorcycleManufacturing, orderByComparator);
 
 		if (ltw_content != null) {
 			return ltw_content;
 		}
 
-		StringBundler sb = new StringBundler(4);
+		StringBundler sb = new StringBundler(6);
 
 		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-		sb.append("motorcycleManufacturing=");
+		sb.append("groupId=");
+		sb.append(groupId);
+
+		sb.append(", motorcycleManufacturing=");
 		sb.append(motorcycleManufacturing);
 
 		sb.append("}");
@@ -4283,25 +4376,27 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the last ltw_content in the ordered set where motorcycleManufacturing = &#63;.
+	 * Returns the last ltw_content in the ordered set where groupId = &#63; and motorcycleManufacturing = &#63;.
 	 *
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching ltw_content, or <code>null</code> if a matching ltw_content could not be found
 	 */
 	@Override
-	public LTW_content fetchByMotorcycleManufacturing_Last(
-		String motorcycleManufacturing,
+	public LTW_content fetchByG_M_Last(
+		long groupId, String motorcycleManufacturing,
 		OrderByComparator<LTW_content> orderByComparator) {
 
-		int count = countByMotorcycleManufacturing(motorcycleManufacturing);
+		int count = countByG_M(groupId, motorcycleManufacturing);
 
 		if (count == 0) {
 			return null;
 		}
 
-		List<LTW_content> list = findByMotorcycleManufacturing(
-			motorcycleManufacturing, count - 1, count, orderByComparator);
+		List<LTW_content> list = findByG_M(
+			groupId, motorcycleManufacturing, count - 1, count,
+			orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -4311,17 +4406,18 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the ltw_contents before and after the current ltw_content in the ordered set where motorcycleManufacturing = &#63;.
+	 * Returns the ltw_contents before and after the current ltw_content in the ordered set where groupId = &#63; and motorcycleManufacturing = &#63;.
 	 *
 	 * @param ltwId the primary key of the current ltw_content
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next ltw_content
 	 * @throws NoSuch_contentException if a ltw_content with the primary key could not be found
 	 */
 	@Override
-	public LTW_content[] findByMotorcycleManufacturing_PrevAndNext(
-			long ltwId, String motorcycleManufacturing,
+	public LTW_content[] findByG_M_PrevAndNext(
+			long ltwId, long groupId, String motorcycleManufacturing,
 			OrderByComparator<LTW_content> orderByComparator)
 		throws NoSuch_contentException {
 
@@ -4336,14 +4432,14 @@ public class LTW_contentPersistenceImpl
 
 			LTW_content[] array = new LTW_contentImpl[3];
 
-			array[0] = getByMotorcycleManufacturing_PrevAndNext(
-				session, ltw_content, motorcycleManufacturing,
+			array[0] = getByG_M_PrevAndNext(
+				session, ltw_content, groupId, motorcycleManufacturing,
 				orderByComparator, true);
 
 			array[1] = ltw_content;
 
-			array[2] = getByMotorcycleManufacturing_PrevAndNext(
-				session, ltw_content, motorcycleManufacturing,
+			array[2] = getByG_M_PrevAndNext(
+				session, ltw_content, groupId, motorcycleManufacturing,
 				orderByComparator, false);
 
 			return array;
@@ -4356,8 +4452,8 @@ public class LTW_contentPersistenceImpl
 		}
 	}
 
-	protected LTW_content getByMotorcycleManufacturing_PrevAndNext(
-		Session session, LTW_content ltw_content,
+	protected LTW_content getByG_M_PrevAndNext(
+		Session session, LTW_content ltw_content, long groupId,
 		String motorcycleManufacturing,
 		OrderByComparator<LTW_content> orderByComparator, boolean previous) {
 
@@ -4365,26 +4461,26 @@ public class LTW_contentPersistenceImpl
 
 		if (orderByComparator != null) {
 			sb = new StringBundler(
-				4 + (orderByComparator.getOrderByConditionFields().length * 3) +
+				5 + (orderByComparator.getOrderByConditionFields().length * 3) +
 					(orderByComparator.getOrderByFields().length * 3));
 		}
 		else {
-			sb = new StringBundler(3);
+			sb = new StringBundler(4);
 		}
 
 		sb.append(_SQL_SELECT_LTW_CONTENT_WHERE);
 
+		sb.append(_FINDER_COLUMN_G_M_GROUPID_2);
+
 		boolean bindMotorcycleManufacturing = false;
 
 		if (motorcycleManufacturing.isEmpty()) {
-			sb.append(
-				_FINDER_COLUMN_MOTORCYCLEMANUFACTURING_MOTORCYCLEMANUFACTURING_3);
+			sb.append(_FINDER_COLUMN_G_M_MOTORCYCLEMANUFACTURING_3);
 		}
 		else {
 			bindMotorcycleManufacturing = true;
 
-			sb.append(
-				_FINDER_COLUMN_MOTORCYCLEMANUFACTURING_MOTORCYCLEMANUFACTURING_2);
+			sb.append(_FINDER_COLUMN_G_M_MOTORCYCLEMANUFACTURING_2);
 		}
 
 		if (orderByComparator != null) {
@@ -4455,6 +4551,8 @@ public class LTW_contentPersistenceImpl
 		query.setMaxResults(2);
 
 		QueryPos queryPos = QueryPos.getInstance(query);
+
+		queryPos.add(groupId);
 
 		if (bindMotorcycleManufacturing) {
 			queryPos.add(motorcycleManufacturing);
@@ -4479,17 +4577,16 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Removes all the ltw_contents where motorcycleManufacturing = &#63; from the database.
+	 * Removes all the ltw_contents where groupId = &#63; and motorcycleManufacturing = &#63; from the database.
 	 *
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 */
 	@Override
-	public void removeByMotorcycleManufacturing(
-		String motorcycleManufacturing) {
-
+	public void removeByG_M(long groupId, String motorcycleManufacturing) {
 		for (LTW_content ltw_content :
-				findByMotorcycleManufacturing(
-					motorcycleManufacturing, QueryUtil.ALL_POS,
+				findByG_M(
+					groupId, motorcycleManufacturing, QueryUtil.ALL_POS,
 					QueryUtil.ALL_POS, null)) {
 
 			remove(ltw_content);
@@ -4497,37 +4594,38 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the number of ltw_contents where motorcycleManufacturing = &#63;.
+	 * Returns the number of ltw_contents where groupId = &#63; and motorcycleManufacturing = &#63;.
 	 *
+	 * @param groupId the group ID
 	 * @param motorcycleManufacturing the motorcycle manufacturing
 	 * @return the number of matching ltw_contents
 	 */
 	@Override
-	public int countByMotorcycleManufacturing(String motorcycleManufacturing) {
+	public int countByG_M(long groupId, String motorcycleManufacturing) {
 		motorcycleManufacturing = Objects.toString(motorcycleManufacturing, "");
 
-		FinderPath finderPath = _finderPathCountByMotorcycleManufacturing;
+		FinderPath finderPath = _finderPathCountByG_M;
 
-		Object[] finderArgs = new Object[] {motorcycleManufacturing};
+		Object[] finderArgs = new Object[] {groupId, motorcycleManufacturing};
 
 		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
 
 		if (count == null) {
-			StringBundler sb = new StringBundler(2);
+			StringBundler sb = new StringBundler(3);
 
 			sb.append(_SQL_COUNT_LTW_CONTENT_WHERE);
+
+			sb.append(_FINDER_COLUMN_G_M_GROUPID_2);
 
 			boolean bindMotorcycleManufacturing = false;
 
 			if (motorcycleManufacturing.isEmpty()) {
-				sb.append(
-					_FINDER_COLUMN_MOTORCYCLEMANUFACTURING_MOTORCYCLEMANUFACTURING_3);
+				sb.append(_FINDER_COLUMN_G_M_MOTORCYCLEMANUFACTURING_3);
 			}
 			else {
 				bindMotorcycleManufacturing = true;
 
-				sb.append(
-					_FINDER_COLUMN_MOTORCYCLEMANUFACTURING_MOTORCYCLEMANUFACTURING_2);
+				sb.append(_FINDER_COLUMN_G_M_MOTORCYCLEMANUFACTURING_2);
 			}
 
 			String sql = sb.toString();
@@ -4540,6 +4638,8 @@ public class LTW_contentPersistenceImpl
 				Query query = session.createQuery(sql);
 
 				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(groupId);
 
 				if (bindMotorcycleManufacturing) {
 					queryPos.add(motorcycleManufacturing);
@@ -4560,79 +4660,84 @@ public class LTW_contentPersistenceImpl
 		return count.intValue();
 	}
 
-	private static final String
-		_FINDER_COLUMN_MOTORCYCLEMANUFACTURING_MOTORCYCLEMANUFACTURING_2 =
-			"ltw_content.motorcycleManufacturing = ?";
+	private static final String _FINDER_COLUMN_G_M_GROUPID_2 =
+		"ltw_content.groupId = ? AND ";
 
-	private static final String
-		_FINDER_COLUMN_MOTORCYCLEMANUFACTURING_MOTORCYCLEMANUFACTURING_3 =
-			"(ltw_content.motorcycleManufacturing IS NULL OR ltw_content.motorcycleManufacturing = '')";
+	private static final String _FINDER_COLUMN_G_M_MOTORCYCLEMANUFACTURING_2 =
+		"ltw_content.motorcycleManufacturing = ?";
 
-	private FinderPath _finderPathWithPaginationFindByMotorcycleYear;
-	private FinderPath _finderPathWithoutPaginationFindByMotorcycleYear;
-	private FinderPath _finderPathCountByMotorcycleYear;
+	private static final String _FINDER_COLUMN_G_M_MOTORCYCLEMANUFACTURING_3 =
+		"(ltw_content.motorcycleManufacturing IS NULL OR ltw_content.motorcycleManufacturing = '')";
+
+	private FinderPath _finderPathWithPaginationFindByM_L;
+	private FinderPath _finderPathWithoutPaginationFindByM_L;
+	private FinderPath _finderPathCountByM_L;
 
 	/**
-	 * Returns all the ltw_contents where motorcycleYear = &#63;.
+	 * Returns all the ltw_contents where motorcycleYear = &#63; and ltwId = &#63;.
 	 *
 	 * @param motorcycleYear the motorcycle year
+	 * @param ltwId the ltw ID
 	 * @return the matching ltw_contents
 	 */
 	@Override
-	public List<LTW_content> findByMotorcycleYear(int motorcycleYear) {
-		return findByMotorcycleYear(
-			motorcycleYear, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	public List<LTW_content> findByM_L(int motorcycleYear, long ltwId) {
+		return findByM_L(
+			motorcycleYear, ltwId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
 	}
 
 	/**
-	 * Returns a range of all the ltw_contents where motorcycleYear = &#63;.
+	 * Returns a range of all the ltw_contents where motorcycleYear = &#63; and ltwId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
 	 * @param motorcycleYear the motorcycle year
+	 * @param ltwId the ltw ID
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
 	 * @return the range of matching ltw_contents
 	 */
 	@Override
-	public List<LTW_content> findByMotorcycleYear(
-		int motorcycleYear, int start, int end) {
+	public List<LTW_content> findByM_L(
+		int motorcycleYear, long ltwId, int start, int end) {
 
-		return findByMotorcycleYear(motorcycleYear, start, end, null);
+		return findByM_L(motorcycleYear, ltwId, start, end, null);
 	}
 
 	/**
-	 * Returns an ordered range of all the ltw_contents where motorcycleYear = &#63;.
+	 * Returns an ordered range of all the ltw_contents where motorcycleYear = &#63; and ltwId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
 	 * @param motorcycleYear the motorcycle year
+	 * @param ltwId the ltw ID
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching ltw_contents
 	 */
 	@Override
-	public List<LTW_content> findByMotorcycleYear(
-		int motorcycleYear, int start, int end,
+	public List<LTW_content> findByM_L(
+		int motorcycleYear, long ltwId, int start, int end,
 		OrderByComparator<LTW_content> orderByComparator) {
 
-		return findByMotorcycleYear(
-			motorcycleYear, start, end, orderByComparator, true);
+		return findByM_L(
+			motorcycleYear, ltwId, start, end, orderByComparator, true);
 	}
 
 	/**
-	 * Returns an ordered range of all the ltw_contents where motorcycleYear = &#63;.
+	 * Returns an ordered range of all the ltw_contents where motorcycleYear = &#63; and ltwId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>LTW_contentModelImpl</code>.
 	 * </p>
 	 *
 	 * @param motorcycleYear the motorcycle year
+	 * @param ltwId the ltw ID
 	 * @param start the lower bound of the range of ltw_contents
 	 * @param end the upper bound of the range of ltw_contents (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
@@ -4640,8 +4745,8 @@ public class LTW_contentPersistenceImpl
 	 * @return the ordered range of matching ltw_contents
 	 */
 	@Override
-	public List<LTW_content> findByMotorcycleYear(
-		int motorcycleYear, int start, int end,
+	public List<LTW_content> findByM_L(
+		int motorcycleYear, long ltwId, int start, int end,
 		OrderByComparator<LTW_content> orderByComparator,
 		boolean useFinderCache) {
 
@@ -4652,14 +4757,14 @@ public class LTW_contentPersistenceImpl
 			(orderByComparator == null)) {
 
 			if (useFinderCache) {
-				finderPath = _finderPathWithoutPaginationFindByMotorcycleYear;
-				finderArgs = new Object[] {motorcycleYear};
+				finderPath = _finderPathWithoutPaginationFindByM_L;
+				finderArgs = new Object[] {motorcycleYear, ltwId};
 			}
 		}
 		else if (useFinderCache) {
-			finderPath = _finderPathWithPaginationFindByMotorcycleYear;
+			finderPath = _finderPathWithPaginationFindByM_L;
 			finderArgs = new Object[] {
-				motorcycleYear, start, end, orderByComparator
+				motorcycleYear, ltwId, start, end, orderByComparator
 			};
 		}
 
@@ -4671,7 +4776,9 @@ public class LTW_contentPersistenceImpl
 
 			if ((list != null) && !list.isEmpty()) {
 				for (LTW_content ltw_content : list) {
-					if (motorcycleYear != ltw_content.getMotorcycleYear()) {
+					if ((motorcycleYear != ltw_content.getMotorcycleYear()) ||
+						(ltwId != ltw_content.getLtwId())) {
+
 						list = null;
 
 						break;
@@ -4685,15 +4792,17 @@ public class LTW_contentPersistenceImpl
 
 			if (orderByComparator != null) {
 				sb = new StringBundler(
-					3 + (orderByComparator.getOrderByFields().length * 2));
+					4 + (orderByComparator.getOrderByFields().length * 2));
 			}
 			else {
-				sb = new StringBundler(3);
+				sb = new StringBundler(4);
 			}
 
 			sb.append(_SQL_SELECT_LTW_CONTENT_WHERE);
 
-			sb.append(_FINDER_COLUMN_MOTORCYCLEYEAR_MOTORCYCLEYEAR_2);
+			sb.append(_FINDER_COLUMN_M_L_MOTORCYCLEYEAR_2);
+
+			sb.append(_FINDER_COLUMN_M_L_LTWID_2);
 
 			if (orderByComparator != null) {
 				appendOrderByComparator(
@@ -4716,6 +4825,8 @@ public class LTW_contentPersistenceImpl
 
 				queryPos.add(motorcycleYear);
 
+				queryPos.add(ltwId);
+
 				list = (List<LTW_content>)QueryUtil.list(
 					query, getDialect(), start, end);
 
@@ -4737,32 +4848,36 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the first ltw_content in the ordered set where motorcycleYear = &#63;.
+	 * Returns the first ltw_content in the ordered set where motorcycleYear = &#63; and ltwId = &#63;.
 	 *
 	 * @param motorcycleYear the motorcycle year
+	 * @param ltwId the ltw ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching ltw_content
 	 * @throws NoSuch_contentException if a matching ltw_content could not be found
 	 */
 	@Override
-	public LTW_content findByMotorcycleYear_First(
-			int motorcycleYear,
+	public LTW_content findByM_L_First(
+			int motorcycleYear, long ltwId,
 			OrderByComparator<LTW_content> orderByComparator)
 		throws NoSuch_contentException {
 
-		LTW_content ltw_content = fetchByMotorcycleYear_First(
-			motorcycleYear, orderByComparator);
+		LTW_content ltw_content = fetchByM_L_First(
+			motorcycleYear, ltwId, orderByComparator);
 
 		if (ltw_content != null) {
 			return ltw_content;
 		}
 
-		StringBundler sb = new StringBundler(4);
+		StringBundler sb = new StringBundler(6);
 
 		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
 
 		sb.append("motorcycleYear=");
 		sb.append(motorcycleYear);
+
+		sb.append(", ltwId=");
+		sb.append(ltwId);
 
 		sb.append("}");
 
@@ -4770,18 +4885,20 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the first ltw_content in the ordered set where motorcycleYear = &#63;.
+	 * Returns the first ltw_content in the ordered set where motorcycleYear = &#63; and ltwId = &#63;.
 	 *
 	 * @param motorcycleYear the motorcycle year
+	 * @param ltwId the ltw ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching ltw_content, or <code>null</code> if a matching ltw_content could not be found
 	 */
 	@Override
-	public LTW_content fetchByMotorcycleYear_First(
-		int motorcycleYear, OrderByComparator<LTW_content> orderByComparator) {
+	public LTW_content fetchByM_L_First(
+		int motorcycleYear, long ltwId,
+		OrderByComparator<LTW_content> orderByComparator) {
 
-		List<LTW_content> list = findByMotorcycleYear(
-			motorcycleYear, 0, 1, orderByComparator);
+		List<LTW_content> list = findByM_L(
+			motorcycleYear, ltwId, 0, 1, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -4791,32 +4908,36 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the last ltw_content in the ordered set where motorcycleYear = &#63;.
+	 * Returns the last ltw_content in the ordered set where motorcycleYear = &#63; and ltwId = &#63;.
 	 *
 	 * @param motorcycleYear the motorcycle year
+	 * @param ltwId the ltw ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching ltw_content
 	 * @throws NoSuch_contentException if a matching ltw_content could not be found
 	 */
 	@Override
-	public LTW_content findByMotorcycleYear_Last(
-			int motorcycleYear,
+	public LTW_content findByM_L_Last(
+			int motorcycleYear, long ltwId,
 			OrderByComparator<LTW_content> orderByComparator)
 		throws NoSuch_contentException {
 
-		LTW_content ltw_content = fetchByMotorcycleYear_Last(
-			motorcycleYear, orderByComparator);
+		LTW_content ltw_content = fetchByM_L_Last(
+			motorcycleYear, ltwId, orderByComparator);
 
 		if (ltw_content != null) {
 			return ltw_content;
 		}
 
-		StringBundler sb = new StringBundler(4);
+		StringBundler sb = new StringBundler(6);
 
 		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
 
 		sb.append("motorcycleYear=");
 		sb.append(motorcycleYear);
+
+		sb.append(", ltwId=");
+		sb.append(ltwId);
 
 		sb.append("}");
 
@@ -4824,24 +4945,26 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the last ltw_content in the ordered set where motorcycleYear = &#63;.
+	 * Returns the last ltw_content in the ordered set where motorcycleYear = &#63; and ltwId = &#63;.
 	 *
 	 * @param motorcycleYear the motorcycle year
+	 * @param ltwId the ltw ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching ltw_content, or <code>null</code> if a matching ltw_content could not be found
 	 */
 	@Override
-	public LTW_content fetchByMotorcycleYear_Last(
-		int motorcycleYear, OrderByComparator<LTW_content> orderByComparator) {
+	public LTW_content fetchByM_L_Last(
+		int motorcycleYear, long ltwId,
+		OrderByComparator<LTW_content> orderByComparator) {
 
-		int count = countByMotorcycleYear(motorcycleYear);
+		int count = countByM_L(motorcycleYear, ltwId);
 
 		if (count == 0) {
 			return null;
 		}
 
-		List<LTW_content> list = findByMotorcycleYear(
-			motorcycleYear, count - 1, count, orderByComparator);
+		List<LTW_content> list = findByM_L(
+			motorcycleYear, ltwId, count - 1, count, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -4851,165 +4974,16 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the ltw_contents before and after the current ltw_content in the ordered set where motorcycleYear = &#63;.
-	 *
-	 * @param ltwId the primary key of the current ltw_content
-	 * @param motorcycleYear the motorcycle year
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next ltw_content
-	 * @throws NoSuch_contentException if a ltw_content with the primary key could not be found
-	 */
-	@Override
-	public LTW_content[] findByMotorcycleYear_PrevAndNext(
-			long ltwId, int motorcycleYear,
-			OrderByComparator<LTW_content> orderByComparator)
-		throws NoSuch_contentException {
-
-		LTW_content ltw_content = findByPrimaryKey(ltwId);
-
-		Session session = null;
-
-		try {
-			session = openSession();
-
-			LTW_content[] array = new LTW_contentImpl[3];
-
-			array[0] = getByMotorcycleYear_PrevAndNext(
-				session, ltw_content, motorcycleYear, orderByComparator, true);
-
-			array[1] = ltw_content;
-
-			array[2] = getByMotorcycleYear_PrevAndNext(
-				session, ltw_content, motorcycleYear, orderByComparator, false);
-
-			return array;
-		}
-		catch (Exception exception) {
-			throw processException(exception);
-		}
-		finally {
-			closeSession(session);
-		}
-	}
-
-	protected LTW_content getByMotorcycleYear_PrevAndNext(
-		Session session, LTW_content ltw_content, int motorcycleYear,
-		OrderByComparator<LTW_content> orderByComparator, boolean previous) {
-
-		StringBundler sb = null;
-
-		if (orderByComparator != null) {
-			sb = new StringBundler(
-				4 + (orderByComparator.getOrderByConditionFields().length * 3) +
-					(orderByComparator.getOrderByFields().length * 3));
-		}
-		else {
-			sb = new StringBundler(3);
-		}
-
-		sb.append(_SQL_SELECT_LTW_CONTENT_WHERE);
-
-		sb.append(_FINDER_COLUMN_MOTORCYCLEYEAR_MOTORCYCLEYEAR_2);
-
-		if (orderByComparator != null) {
-			String[] orderByConditionFields =
-				orderByComparator.getOrderByConditionFields();
-
-			if (orderByConditionFields.length > 0) {
-				sb.append(WHERE_AND);
-			}
-
-			for (int i = 0; i < orderByConditionFields.length; i++) {
-				sb.append(_ORDER_BY_ENTITY_ALIAS);
-				sb.append(orderByConditionFields[i]);
-
-				if ((i + 1) < orderByConditionFields.length) {
-					if (orderByComparator.isAscending() ^ previous) {
-						sb.append(WHERE_GREATER_THAN_HAS_NEXT);
-					}
-					else {
-						sb.append(WHERE_LESSER_THAN_HAS_NEXT);
-					}
-				}
-				else {
-					if (orderByComparator.isAscending() ^ previous) {
-						sb.append(WHERE_GREATER_THAN);
-					}
-					else {
-						sb.append(WHERE_LESSER_THAN);
-					}
-				}
-			}
-
-			sb.append(ORDER_BY_CLAUSE);
-
-			String[] orderByFields = orderByComparator.getOrderByFields();
-
-			for (int i = 0; i < orderByFields.length; i++) {
-				sb.append(_ORDER_BY_ENTITY_ALIAS);
-				sb.append(orderByFields[i]);
-
-				if ((i + 1) < orderByFields.length) {
-					if (orderByComparator.isAscending() ^ previous) {
-						sb.append(ORDER_BY_ASC_HAS_NEXT);
-					}
-					else {
-						sb.append(ORDER_BY_DESC_HAS_NEXT);
-					}
-				}
-				else {
-					if (orderByComparator.isAscending() ^ previous) {
-						sb.append(ORDER_BY_ASC);
-					}
-					else {
-						sb.append(ORDER_BY_DESC);
-					}
-				}
-			}
-		}
-		else {
-			sb.append(LTW_contentModelImpl.ORDER_BY_JPQL);
-		}
-
-		String sql = sb.toString();
-
-		Query query = session.createQuery(sql);
-
-		query.setFirstResult(0);
-		query.setMaxResults(2);
-
-		QueryPos queryPos = QueryPos.getInstance(query);
-
-		queryPos.add(motorcycleYear);
-
-		if (orderByComparator != null) {
-			for (Object orderByConditionValue :
-					orderByComparator.getOrderByConditionValues(ltw_content)) {
-
-				queryPos.add(orderByConditionValue);
-			}
-		}
-
-		List<LTW_content> list = query.list();
-
-		if (list.size() == 2) {
-			return list.get(1);
-		}
-		else {
-			return null;
-		}
-	}
-
-	/**
-	 * Removes all the ltw_contents where motorcycleYear = &#63; from the database.
+	 * Removes all the ltw_contents where motorcycleYear = &#63; and ltwId = &#63; from the database.
 	 *
 	 * @param motorcycleYear the motorcycle year
+	 * @param ltwId the ltw ID
 	 */
 	@Override
-	public void removeByMotorcycleYear(int motorcycleYear) {
+	public void removeByM_L(int motorcycleYear, long ltwId) {
 		for (LTW_content ltw_content :
-				findByMotorcycleYear(
-					motorcycleYear, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
+				findByM_L(
+					motorcycleYear, ltwId, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
 					null)) {
 
 			remove(ltw_content);
@@ -5017,25 +4991,28 @@ public class LTW_contentPersistenceImpl
 	}
 
 	/**
-	 * Returns the number of ltw_contents where motorcycleYear = &#63;.
+	 * Returns the number of ltw_contents where motorcycleYear = &#63; and ltwId = &#63;.
 	 *
 	 * @param motorcycleYear the motorcycle year
+	 * @param ltwId the ltw ID
 	 * @return the number of matching ltw_contents
 	 */
 	@Override
-	public int countByMotorcycleYear(int motorcycleYear) {
-		FinderPath finderPath = _finderPathCountByMotorcycleYear;
+	public int countByM_L(int motorcycleYear, long ltwId) {
+		FinderPath finderPath = _finderPathCountByM_L;
 
-		Object[] finderArgs = new Object[] {motorcycleYear};
+		Object[] finderArgs = new Object[] {motorcycleYear, ltwId};
 
 		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
 
 		if (count == null) {
-			StringBundler sb = new StringBundler(2);
+			StringBundler sb = new StringBundler(3);
 
 			sb.append(_SQL_COUNT_LTW_CONTENT_WHERE);
 
-			sb.append(_FINDER_COLUMN_MOTORCYCLEYEAR_MOTORCYCLEYEAR_2);
+			sb.append(_FINDER_COLUMN_M_L_MOTORCYCLEYEAR_2);
+
+			sb.append(_FINDER_COLUMN_M_L_LTWID_2);
 
 			String sql = sb.toString();
 
@@ -5049,6 +5026,8 @@ public class LTW_contentPersistenceImpl
 				QueryPos queryPos = QueryPos.getInstance(query);
 
 				queryPos.add(motorcycleYear);
+
+				queryPos.add(ltwId);
 
 				count = (Long)query.uniqueResult();
 
@@ -5065,8 +5044,11 @@ public class LTW_contentPersistenceImpl
 		return count.intValue();
 	}
 
-	private static final String _FINDER_COLUMN_MOTORCYCLEYEAR_MOTORCYCLEYEAR_2 =
-		"ltw_content.motorcycleYear = ?";
+	private static final String _FINDER_COLUMN_M_L_MOTORCYCLEYEAR_2 =
+		"ltw_content.motorcycleYear = ? AND ";
+
+	private static final String _FINDER_COLUMN_M_L_LTWID_2 =
+		"ltw_content.ltwId = ?";
 
 	public LTW_contentPersistenceImpl() {
 		Map<String, String> dbColumnNames = new HashMap<String, String>();
@@ -5727,98 +5709,99 @@ public class LTW_contentPersistenceImpl
 			new String[] {Long.class.getName()}, new String[] {"companyId"},
 			false);
 
-		_finderPathWithPaginationFindByUserId = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByUserId",
+		_finderPathWithPaginationFindByC_U = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByC_U",
 			new String[] {
-				Long.class.getName(), Integer.class.getName(),
-				Integer.class.getName(), OrderByComparator.class.getName()
+				Long.class.getName(), Long.class.getName(),
+				Integer.class.getName(), Integer.class.getName(),
+				OrderByComparator.class.getName()
 			},
-			new String[] {"userId"}, true);
+			new String[] {"companyId", "userId"}, true);
 
-		_finderPathWithoutPaginationFindByUserId = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByUserId",
-			new String[] {Long.class.getName()}, new String[] {"userId"}, true);
+		_finderPathWithoutPaginationFindByC_U = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByC_U",
+			new String[] {Long.class.getName(), Long.class.getName()},
+			new String[] {"companyId", "userId"}, true);
 
-		_finderPathCountByUserId = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByUserId",
-			new String[] {Long.class.getName()}, new String[] {"userId"},
-			false);
+		_finderPathCountByC_U = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByC_U",
+			new String[] {Long.class.getName(), Long.class.getName()},
+			new String[] {"companyId", "userId"}, false);
 
-		_finderPathWithPaginationFindByUserName = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByUserName",
+		_finderPathWithPaginationFindByU = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByU",
 			new String[] {
 				String.class.getName(), Integer.class.getName(),
 				Integer.class.getName(), OrderByComparator.class.getName()
 			},
 			new String[] {"userName"}, true);
 
-		_finderPathWithoutPaginationFindByUserName = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByUserName",
+		_finderPathWithoutPaginationFindByU = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByU",
 			new String[] {String.class.getName()}, new String[] {"userName"},
 			true);
 
-		_finderPathCountByUserName = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByUserName",
+		_finderPathCountByU = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByU",
 			new String[] {String.class.getName()}, new String[] {"userName"},
 			false);
 
-		_finderPathWithPaginationFindByMotorcycleName = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByMotorcycleName",
+		_finderPathWithPaginationFindByC_M = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByC_M",
 			new String[] {
-				String.class.getName(), Integer.class.getName(),
-				Integer.class.getName(), OrderByComparator.class.getName()
-			},
-			new String[] {"motorcycleName"}, true);
-
-		_finderPathWithoutPaginationFindByMotorcycleName = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByMotorcycleName",
-			new String[] {String.class.getName()},
-			new String[] {"motorcycleName"}, true);
-
-		_finderPathCountByMotorcycleName = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByMotorcycleName",
-			new String[] {String.class.getName()},
-			new String[] {"motorcycleName"}, false);
-
-		_finderPathWithPaginationFindByMotorcycleManufacturing = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION,
-			"findByMotorcycleManufacturing",
-			new String[] {
-				String.class.getName(), Integer.class.getName(),
-				Integer.class.getName(), OrderByComparator.class.getName()
-			},
-			new String[] {"motorcycleManufacturing"}, true);
-
-		_finderPathWithoutPaginationFindByMotorcycleManufacturing =
-			new FinderPath(
-				FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
-				"findByMotorcycleManufacturing",
-				new String[] {String.class.getName()},
-				new String[] {"motorcycleManufacturing"}, true);
-
-		_finderPathCountByMotorcycleManufacturing = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
-			"countByMotorcycleManufacturing",
-			new String[] {String.class.getName()},
-			new String[] {"motorcycleManufacturing"}, false);
-
-		_finderPathWithPaginationFindByMotorcycleYear = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByMotorcycleYear",
-			new String[] {
+				Long.class.getName(), String.class.getName(),
 				Integer.class.getName(), Integer.class.getName(),
-				Integer.class.getName(), OrderByComparator.class.getName()
+				OrderByComparator.class.getName()
 			},
-			new String[] {"motorcycleYear"}, true);
+			new String[] {"companyId", "motorcycleName"}, true);
 
-		_finderPathWithoutPaginationFindByMotorcycleYear = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByMotorcycleYear",
-			new String[] {Integer.class.getName()},
-			new String[] {"motorcycleYear"}, true);
+		_finderPathWithoutPaginationFindByC_M = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByC_M",
+			new String[] {Long.class.getName(), String.class.getName()},
+			new String[] {"companyId", "motorcycleName"}, true);
 
-		_finderPathCountByMotorcycleYear = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByMotorcycleYear",
-			new String[] {Integer.class.getName()},
-			new String[] {"motorcycleYear"}, false);
+		_finderPathCountByC_M = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByC_M",
+			new String[] {Long.class.getName(), String.class.getName()},
+			new String[] {"companyId", "motorcycleName"}, false);
+
+		_finderPathWithPaginationFindByG_M = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByG_M",
+			new String[] {
+				Long.class.getName(), String.class.getName(),
+				Integer.class.getName(), Integer.class.getName(),
+				OrderByComparator.class.getName()
+			},
+			new String[] {"groupId", "motorcycleManufacturing"}, true);
+
+		_finderPathWithoutPaginationFindByG_M = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByG_M",
+			new String[] {Long.class.getName(), String.class.getName()},
+			new String[] {"groupId", "motorcycleManufacturing"}, true);
+
+		_finderPathCountByG_M = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByG_M",
+			new String[] {Long.class.getName(), String.class.getName()},
+			new String[] {"groupId", "motorcycleManufacturing"}, false);
+
+		_finderPathWithPaginationFindByM_L = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByM_L",
+			new String[] {
+				Integer.class.getName(), Long.class.getName(),
+				Integer.class.getName(), Integer.class.getName(),
+				OrderByComparator.class.getName()
+			},
+			new String[] {"motorcycleYear", "ltwId"}, true);
+
+		_finderPathWithoutPaginationFindByM_L = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByM_L",
+			new String[] {Integer.class.getName(), Long.class.getName()},
+			new String[] {"motorcycleYear", "ltwId"}, true);
+
+		_finderPathCountByM_L = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByM_L",
+			new String[] {Integer.class.getName(), Long.class.getName()},
+			new String[] {"motorcycleYear", "ltwId"}, false);
 
 		LTW_contentUtil.setPersistence(this);
 	}
