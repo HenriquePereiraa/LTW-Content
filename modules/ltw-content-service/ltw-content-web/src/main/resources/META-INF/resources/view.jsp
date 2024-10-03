@@ -1,7 +1,7 @@
 <%@ include file="/init.jsp" %>
 
-<portlet:renderURL var="editEmployeeEntryRequestURL">
-	<portlet:param name="mvcPath" value="" />
+<portlet:renderURL var="addNewMotocycleRequestURL">
+	<portlet:param name="mvcPath" value="/ltwContent/add-new-motocycle.jsp" />
 </portlet:renderURL>
 
 <portlet:renderURL var="viewLtwContentRequestURL">
@@ -15,7 +15,7 @@
 	</div>
 
 	<div class="ltw-right">
-		<aui:form action="<%= editEmployeeEntryRequestURL %>" method="post" name="fm">
+		<aui:form action="<%= addNewMotocycleRequestURL %>" method="post" name="fm">
 			<div class="button-group">
 				<aui:button-row>
 					<aui:button type="submit" value="Add New Motorcycles" />

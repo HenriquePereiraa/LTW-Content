@@ -16,7 +16,7 @@ import javax.portlet.RenderResponse;
         },
         service =  MVCRenderCommand.class
 )
-public class ViewLtwContentDetail implements MVCRenderCommand {
+public class ViewLtwContentDetailMVCRenderCommand implements MVCRenderCommand {
     @Override
     public String render(RenderRequest renderRequest, RenderResponse renderResponse) throws PortletException {
         return "/ltwContent/view-ltwcontent-detail.jsp";
