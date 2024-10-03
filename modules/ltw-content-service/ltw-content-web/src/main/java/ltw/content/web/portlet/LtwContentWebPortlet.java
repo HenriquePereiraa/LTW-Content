@@ -36,7 +36,7 @@ import java.io.IOException;
 public class LtwContentWebPortlet extends MVCPortlet {
 
 	@Override
-	public void doView(RenderRequest renderRequest, RenderResponse renderResponse) throws IOException, PortletException {
+	public void render(RenderRequest renderRequest, RenderResponse renderResponse) throws IOException, PortletException {
 
 		HttpServletRequest request = PortalUtil.getHttpServletRequest(renderRequest);
 
@@ -45,10 +45,7 @@ public class LtwContentWebPortlet extends MVCPortlet {
 
 		request.setAttribute("ltwContentDisplayContext", ltwContentDisplayContext);
 
-		super.doView(renderRequest, renderResponse);
-
-		// Encaminhar para o JSP ltw-content-management.jsp
-    	include("/ltw-content-management/ltw-content-management.jsp", renderRequest, renderResponse);
+		super.render(renderRequest, renderResponse);
 	}
 
 	private PortletURL createPortletURL(RenderResponse renderResponse) {
