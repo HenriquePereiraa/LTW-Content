@@ -1,2 +1,76 @@
-.ltw-content-web {
+.ltw-container {
+  display: flex;
+  height: 100vh;
+
+  .ltw-left {
+    width: 75%;
+    position: relative;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url('http://localhost:8080/documents/d/guest/royal-enfield-wallpaper-11f5f3f4117d7eab7ca93efc47ad30dd') center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      font-family: monospace;
+      color: white;
+      font-size: 5rem;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 0.15em solid rgba(255, 255, 255, 0.75);
+      width: 0; // Começa oculto
+      animation: typing 4s steps(30, end), blink-caret 0.75s step-end infinite;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 80%;
+      }
+    }
+
+    @keyframes blink-caret {
+      from, to {
+        border-color: transparent;
+      }
+      50% {
+        border-color: rgba(255, 255, 255, 0.75);
+      }
+    }
+  }
+
+  .ltw-right {
+    width: 25%;
+    background-color: #202020;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    color: #fff;
+    box-shadow: -48px 0 54px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+
+    .button-group {
+      margin-bottom: 20px;
+
+      button {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        color: #000;
+        background-color: #fff;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: #f0f0f0;
+        }
+      }
+    }
+  }
 }
