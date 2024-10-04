@@ -10,7 +10,7 @@
 %>
 
  <clay:management-toolbar
-       managementToolbarDisplayContext="<%= ltwContentManagementToolbarDisplayContext %>"
+         displayContext="<%= ltwContentManagementToolbarDisplayContext %>"
  />
 
 
@@ -25,6 +25,10 @@
                 modelVar="ltwContentDisplay">
 
             <liferay-ui:search-container-column-text
+                    name="Motorcycle Id"
+                    value="<%= String.valueOf(ltwContentDisplay.getContentId()) %>" />
+
+            <liferay-ui:search-container-column-text
                     name="Motorcycle Name"
                     value="<%= ltwContentDisplay.get_motorcycleName() %>" />
 
@@ -35,6 +39,12 @@
             <liferay-ui:search-container-column-text
                     name="Motorcycle Year"
                     value="<%= String.valueOf(ltwContentDisplay.get_motorcycleYear()) %>" />
+
+            <liferay-ui:search-container-column-text>
+                <clay:dropdown-actions
+                        dropdownItems="<%= ltwContentManagementToolbarDisplayContext.getActionDropdownItems(ltwContentDisplay.getContentId()) %>"
+                />
+            </liferay-ui:search-container-column-text>
         </liferay-ui:search-container-row>
 
         <liferay-ui:search-iterator

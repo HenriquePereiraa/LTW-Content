@@ -16,11 +16,12 @@ import org.osgi.service.component.annotations.Reference;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
+import javax.portlet.PortletException;
 
 @Component(
         property = {
                 "javax.portlet.name=" + LtwContentWebPortletKeys.LTWCONTENTWEB,
-                "mvc.command.name=/ltwContent/add-new-motocycle"
+                "mvc.command.name=/ltwContent/add-new-motocycle", "mvc.command.name=/delete"
         },
         service = MVCActionCommand.class
 )
@@ -37,9 +38,14 @@ public class ViewLtwContentDetailMVCActionCommand extends BaseMVCActionCommand {
             if(cmd.equals(Constants.ADD)) {
                 ltwContent = _addLtwContent(actionRequest);
                 sendRedirect(actionRequest, actionResponse, redirect);
+            } else if (cmd.equals(Constants.DELETE)) {
+                ltwContent = _deleteLtwContent(actionRequest);
+                sendRedirect(actionRequest, actionResponse, redirect);
+            } else if (cmd.equals(Constants.UPDATE)) {
+
             }
 
-       } catch (Exception exception) {
+        } catch (Exception exception) {
            if ((exception instanceof ModelListenerException) &&
                    (exception.getCause() instanceof PortalException)) {
 
@@ -61,6 +67,16 @@ public class ViewLtwContentDetailMVCActionCommand extends BaseMVCActionCommand {
        return _ltwcontentLocalService.addLTW_content(
                motocycleName, motorcycleManufacturing, motocycleYear
        );
+    }
+
+    private LTW_content _deleteLtwContent(ActionRequest actionRequest) throws Exception {
+        Long motocycleId = ParamUtil.getLong(actionRequest, "motorcycleId");
+
+        if(Validator.isNull(motocycleId)) {
+            throw new PortletException("motocycleId is required");
+        }
+
+        return _ltwcontentLocalService.deleteLTW_content(motocycleId);
     }
 
     @Reference

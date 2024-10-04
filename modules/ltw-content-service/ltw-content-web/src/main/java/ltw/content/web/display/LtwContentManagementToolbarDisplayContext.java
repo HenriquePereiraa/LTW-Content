@@ -1,8 +1,9 @@
 package ltw.content.web.display;
 
+import aQute.libg.generics.Create;
 import com.liferay.frontend.taglib.clay.servlet.taglib.display.context.SearchContainerManagementToolbarDisplayContext;
-import com.liferay.frontend.taglib.clay.servlet.taglib.util.DropdownItem;
-import com.liferay.frontend.taglib.clay.servlet.taglib.util.DropdownItemList;
+import com.liferay.frontend.taglib.clay.servlet.taglib.util.*;
+import com.liferay.petra.function.UnsafeConsumer;
 import com.liferay.petra.string.StringPool;
 import com.liferay.portal.kernel.dao.search.SearchContainer;
 import com.liferay.portal.kernel.language.LanguageUtil;
@@ -12,11 +13,13 @@ import com.liferay.portal.kernel.portlet.LiferayPortletRequest;
 import com.liferay.portal.kernel.portlet.LiferayPortletResponse;
 import com.liferay.portal.kernel.portlet.PortletURLUtil;
 import com.liferay.portal.kernel.portlet.url.builder.PortletURLBuilder;
+import com.liferay.portal.kernel.security.permission.ActionKeys;
+import com.liferay.portal.kernel.service.permission.UserPermissionUtil;
 import com.liferay.portal.kernel.service.persistence.PortletUtil;
-import com.liferay.portal.kernel.util.ParamUtil;
-import com.liferay.portal.kernel.util.PortalUtil;
-import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.kernel.theme.ThemeDisplay;
+import com.liferay.portal.kernel.util.*;
 import ltw.content.service.service.LTW_contentLocalService;
+import ltw.content.web.constants.LtwContentWebPortletKeys;
 import org.osgi.service.component.annotations.Reference;
 
 import javax.portlet.PortletURL;
@@ -39,6 +42,8 @@ public class LtwContentManagementToolbarDisplayContext extends SearchContainerMa
         this.searchContainer = searchContainer;
         _renderResponse = renderResponse;
         _request = httpServletRequest;
+        _themeDisplay = (ThemeDisplay) liferayPortletRequest.getAttribute(
+                WebKeys.THEME_DISPLAY);
     }
 
 
@@ -85,16 +90,16 @@ public class LtwContentManagementToolbarDisplayContext extends SearchContainerMa
         }
     }
 
-    @Override
-    public String getSortingURL() {
-        PortletURL sortingURL = getPortletURL();
-
-        sortingURL.setParameter(
-                "orderByType",
-                Objects.equals(getOrderByType(), "asc") ? "desc" : "asc");
-
-        return sortingURL.toString();
-    }
+//    @Override
+//    public String getSortingURL() {
+//        PortletURL sortingURL = getPortletURL();
+//
+//        sortingURL.setParameter(
+//                "orderByType",
+//                Objects.equals(getOrderByType(), "asc") ? "desc" : "asc");
+//
+//        return sortingURL.toString();
+//    }
 
     public String getRedirect() {
         if (liferayPortletRequest != null) {
@@ -129,23 +134,23 @@ public class LtwContentManagementToolbarDisplayContext extends SearchContainerMa
         return _eventName;
     }
 
-    @Override
-    public List<DropdownItem> getFilterDropdownItems() {
-        return new DropdownItemList() {
-            {
-                addGroup(
-                        dropdownGroupItem -> {
-                            dropdownGroupItem.setDropdownItems(
-                                    _getFilterNavigationDropdownItems()
-                            );
-                            dropdownGroupItem.setLabel(
-                                    "filter by navigation"
-                            );
-                        }
-                );
-            }
-        };
-    }
+//    @Override
+//    public List<DropdownItem> getFilterDropdownItems() {
+//        return new DropdownItemList() {
+//            {
+//                addGroup(
+//                        dropdownGroupItem -> {
+//                            dropdownGroupItem.setDropdownItems(
+//                                    _getFilterNavigationDropdownItems()
+//                            );
+//                            dropdownGroupItem.setLabel(
+//                                    "filter by navigation"
+//                            );
+//                        }
+//                );
+//            }
+//        };
+//    }
 
     private List<DropdownItem> _getFilterNavigationDropdownItems() {
         return new DropdownItemList() {
@@ -158,6 +163,45 @@ public class LtwContentManagementToolbarDisplayContext extends SearchContainerMa
                         }
                 );
             }
+        };
+    }
+
+
+    public List<DropdownItem> getActionDropdownItems(long motocycleId)  {
+        boolean hasDeletePermission = UserPermissionUtil.contains(
+                _themeDisplay.getPermissionChecker(), PortalUtil.getUserId(httpServletRequest),
+                ActionKeys.DELETE);
+
+        return DropdownItemListBuilder.addGroup(
+                dropdownGroupItem -> {
+                    dropdownGroupItem.setDropdownItems(
+                            DropdownItemListBuilder.add(
+                                    () -> hasDeletePermission,
+                                    _getDeleteMotocycleInfo(motocycleId)
+                            ).build()
+                    );
+                }
+        ).build();
+    }
+
+    private UnsafeConsumer<DropdownItem, Exception> _getDeleteMotocycleInfo(long motocycleId) throws Exception {
+        return dropdownItem -> {
+            dropdownItem.setHref(
+                    PortletURLBuilder.createActionURL(
+                            liferayPortletResponse
+                    ).setActionName(
+                            "/delete"
+                    ).setCMD(
+                            Constants.DELETE
+                    ).setRedirect(
+                            _redirect
+                    ).setParameter(
+                            "motorcycleId", motocycleId
+                    ).buildString()
+            );
+            dropdownItem.setIcon("trash");
+            dropdownItem.setLabel("delete Motocycle info");
+            dropdownItem.setQuickAction(true);
         };
     }
 
@@ -190,6 +234,7 @@ public class LtwContentManagementToolbarDisplayContext extends SearchContainerMa
     @Reference
     private LTW_contentLocalService _ltwContentLocalService;
 
+    private final ThemeDisplay _themeDisplay;
     private HttpServletRequest _request;
     private final RenderResponse _renderResponse;
     private String _redirect;
