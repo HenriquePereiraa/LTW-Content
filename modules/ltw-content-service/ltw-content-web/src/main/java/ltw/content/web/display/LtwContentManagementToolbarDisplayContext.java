@@ -172,16 +172,40 @@ public class LtwContentManagementToolbarDisplayContext extends SearchContainerMa
                 _themeDisplay.getPermissionChecker(), PortalUtil.getUserId(httpServletRequest),
                 ActionKeys.DELETE);
 
+        boolean hasEditPermission = UserPermissionUtil.contains(
+                _themeDisplay.getPermissionChecker(), PortalUtil.getUserId(httpServletRequest),
+                ActionKeys.UPDATE);
+
         return DropdownItemListBuilder.addGroup(
                 dropdownGroupItem -> {
                     dropdownGroupItem.setDropdownItems(
                             DropdownItemListBuilder.add(
                                     () -> hasDeletePermission,
                                     _getDeleteMotocycleInfo(motocycleId)
+                            ).add(
+                                    () -> hasEditPermission,
+                                    _getEditMotocycleInfo(motocycleId)
                             ).build()
                     );
                 }
         ).build();
+    }
+
+    private UnsafeConsumer<DropdownItem, Exception> _getEditMotocycleInfo(long motocycleId) throws Exception {
+        return dropdownItem -> {
+            dropdownItem.setHref(
+                    PortletURLBuilder.createActionURL(
+                            liferayPortletResponse
+                    ).setMVCRenderCommandName(
+                            "/ltwContent/edit-motocycle"
+                    ).setParameter(
+                            "motocycleId", motocycleId
+                    ).buildString()
+            );
+            dropdownItem.setIcon("pencil");
+            dropdownItem.setLabel("Edit Motocycle Info");
+            dropdownItem.setQuickAction(true);
+        };
     }
 
     private UnsafeConsumer<DropdownItem, Exception> _getDeleteMotocycleInfo(long motocycleId) throws Exception {
@@ -200,7 +224,7 @@ public class LtwContentManagementToolbarDisplayContext extends SearchContainerMa
                     ).buildString()
             );
             dropdownItem.setIcon("trash");
-            dropdownItem.setLabel("delete Motocycle info");
+            dropdownItem.setLabel("Delete Motocycle Info");
             dropdownItem.setQuickAction(true);
         };
     }

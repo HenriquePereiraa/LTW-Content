@@ -4,7 +4,6 @@ import com.liferay.portal.kernel.exception.ModelListenerException;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.portlet.bridges.mvc.BaseMVCActionCommand;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCActionCommand;
-import com.liferay.portal.kernel.servlet.SessionErrors;
 import com.liferay.portal.kernel.util.Constants;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.Validator;
@@ -42,7 +41,8 @@ public class ViewLtwContentDetailMVCActionCommand extends BaseMVCActionCommand {
                 ltwContent = _deleteLtwContent(actionRequest);
                 sendRedirect(actionRequest, actionResponse, redirect);
             } else if (cmd.equals(Constants.UPDATE)) {
-
+                ltwContent = _updateLtwContent(actionRequest);
+                sendRedirect(actionRequest, actionResponse, "redirect");
             }
 
         } catch (Exception exception) {
@@ -67,6 +67,25 @@ public class ViewLtwContentDetailMVCActionCommand extends BaseMVCActionCommand {
        return _ltwcontentLocalService.addLTW_content(
                motocycleName, motorcycleManufacturing, motocycleYear
        );
+    }
+
+    private LTW_content _updateLtwContent(
+            ActionRequest actionRequest
+    ) throws Exception {
+        long motocycleId = ParamUtil.getLong(actionRequest, "motorcycleId");
+        String motocycleName = ParamUtil.getString(actionRequest, "motocycleName");
+        String motorcycleManufacturing = ParamUtil.getString(actionRequest, "motorcycleManufacturing");
+        int motorcycleYear = ParamUtil.getInteger(actionRequest, "motorcycleYear");
+
+        LTW_content ltw_content = _ltwcontentLocalService.fetchLTW_content(motocycleId);
+
+        ltw_content.setMotorcycleName(motocycleName);
+        ltw_content.setMotorcycleManufacturing(motorcycleManufacturing);
+        ltw_content.setMotorcycleYear(motorcycleYear);
+
+        return _ltwcontentLocalService.updateLTW_content(
+                motocycleId, ltw_content
+        );
     }
 
     private LTW_content _deleteLtwContent(ActionRequest actionRequest) throws Exception {
