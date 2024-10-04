@@ -6,7 +6,6 @@ import com.liferay.frontend.taglib.clay.servlet.taglib.util.*;
 import com.liferay.petra.function.UnsafeConsumer;
 import com.liferay.petra.string.StringPool;
 import com.liferay.portal.kernel.dao.search.SearchContainer;
-import com.liferay.portal.kernel.language.LanguageUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.LiferayPortletRequest;
@@ -15,18 +14,15 @@ import com.liferay.portal.kernel.portlet.PortletURLUtil;
 import com.liferay.portal.kernel.portlet.url.builder.PortletURLBuilder;
 import com.liferay.portal.kernel.security.permission.ActionKeys;
 import com.liferay.portal.kernel.service.permission.UserPermissionUtil;
-import com.liferay.portal.kernel.service.persistence.PortletUtil;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.*;
 import ltw.content.service.service.LTW_contentLocalService;
-import ltw.content.web.constants.LtwContentWebPortletKeys;
 import org.osgi.service.component.annotations.Reference;
 
 import javax.portlet.PortletURL;
 import javax.portlet.RenderResponse;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.Objects;
 
 public class LtwContentManagementToolbarDisplayContext extends SearchContainerManagementToolbarDisplayContext {
 
@@ -56,27 +52,6 @@ public class LtwContentManagementToolbarDisplayContext extends SearchContainerMa
         ).buildString();
     }
 
-    @Override
-    protected String getOrderByType() {
-        if (Validator.isNotNull(_orderByType)) {
-            return _orderByType;
-        }
-
-        _orderByType = ParamUtil.getString(_request, "orderByType", "asc");
-
-        return _orderByType;
-    }
-
-    public String getKeywords() {
-        if (_keywords != null) {
-            return _keywords;
-        }
-
-        _keywords = ParamUtil.getString(_request, "keywords");
-
-        return _keywords;
-    }
-
     public PortletURL getPortletURL() {
         try {
             return PortletURLUtil.clone(currentURLObj, liferayPortletResponse);
@@ -88,82 +63,6 @@ public class LtwContentManagementToolbarDisplayContext extends SearchContainerMa
 
             return liferayPortletResponse.createRenderURL();
         }
-    }
-
-//    @Override
-//    public String getSortingURL() {
-//        PortletURL sortingURL = getPortletURL();
-//
-//        sortingURL.setParameter(
-//                "orderByType",
-//                Objects.equals(getOrderByType(), "asc") ? "desc" : "asc");
-//
-//        return sortingURL.toString();
-//    }
-
-    public String getRedirect() {
-        if (liferayPortletRequest != null) {
-            return _redirect;
-        }
-
-        _redirect = PortalUtil.escapeRedirect(
-                ParamUtil.getString(_request, "redirect"));
-
-        return _redirect;
-    }
-
-    public long getGroupId() {
-        if (_groupId != null) {
-            return _groupId;
-        }
-
-        _groupId = ParamUtil.getLong(_request, "groupId");
-
-        return _groupId;
-    }
-
-    public String getEventName() {
-        if (_eventName != null) {
-            return _eventName;
-        }
-
-        _eventName = ParamUtil.getString(
-                _request, "eventName",
-                _renderResponse.getNamespace() + "selectUser");
-
-        return _eventName;
-    }
-
-//    @Override
-//    public List<DropdownItem> getFilterDropdownItems() {
-//        return new DropdownItemList() {
-//            {
-//                addGroup(
-//                        dropdownGroupItem -> {
-//                            dropdownGroupItem.setDropdownItems(
-//                                    _getFilterNavigationDropdownItems()
-//                            );
-//                            dropdownGroupItem.setLabel(
-//                                    "filter by navigation"
-//                            );
-//                        }
-//                );
-//            }
-//        };
-//    }
-
-    private List<DropdownItem> _getFilterNavigationDropdownItems() {
-        return new DropdownItemList() {
-            {
-                add(
-                        dropdownItem -> {
-                            dropdownItem.setActive(true);
-                            dropdownItem.setHref(getPortletURL());
-                            dropdownItem.setLabel("all");
-                        }
-                );
-            }
-        };
     }
 
 
@@ -262,10 +161,6 @@ public class LtwContentManagementToolbarDisplayContext extends SearchContainerMa
     private HttpServletRequest _request;
     private final RenderResponse _renderResponse;
     private String _redirect;
-    private Long _groupId;
-    private String _keywords;
-    private String _orderByType;
-    private String _eventName;
 
     private final SearchContainer<?> searchContainer;
 }
