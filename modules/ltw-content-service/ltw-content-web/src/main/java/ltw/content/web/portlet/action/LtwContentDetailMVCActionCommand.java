@@ -24,7 +24,7 @@ import javax.portlet.PortletException;
         },
         service = MVCActionCommand.class
 )
-public class ViewLtwContentDetailMVCActionCommand extends BaseMVCActionCommand {
+public class LtwContentDetailMVCActionCommand extends BaseMVCActionCommand {
     @Override
     protected void doProcessAction(ActionRequest actionRequest, ActionResponse actionResponse) throws Exception {
 
