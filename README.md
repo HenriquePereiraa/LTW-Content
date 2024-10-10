@@ -4,7 +4,7 @@ LTW - Life on Two Wheels
    - ` docker run -it --name ltw_db -p 3306:3306 -e MYSQL_ROOT_PASSWORD= -e MYSQL_DATABASE=lportal -e MYSQL_ALLOW_EMPTY_PASSWORD=yes mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci`
 
    - Execute the following command to copy the dump to the database.
-        - `mysqldump -u root ltw_db < ltw_db.sql`
+        - `mysql -u root lportal < ltw_db.sql`
     - link to drive to download the dump:
         - https://drive.google.com/drive/folders/1Q47G3cLG-6KHlKdT6ZvzXV-92jFFXREz?usp=drive_link 
 
