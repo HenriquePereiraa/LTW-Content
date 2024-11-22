@@ -45,7 +45,7 @@ public class MotorcycleDetailsFDSDataProvider implements FDSDataProvider<Motorcy
     public int getItemsCount(FDSKeywords fdsKeywords, HttpServletRequest httpServletRequest) throws PortalException {
         return _ltwContentLocalService.getLTW_contentsCount();
     }
-    
+
     @Reference
     private LTW_contentLocalService _ltwContentLocalService;
 }
