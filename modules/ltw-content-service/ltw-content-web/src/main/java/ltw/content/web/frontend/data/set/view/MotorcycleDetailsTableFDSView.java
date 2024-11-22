@@ -22,9 +22,13 @@ public class MotorcycleDetailsTableFDSView extends BaseTableFDSView {
         FDSTableSchemaBuilder fdsTableSchemaBuilder = _fdsTableSchemaBuilderFactory.create();
 
         return fdsTableSchemaBuilder.add(
-                "Motorcycle name","Motorcycle name"
+                "ltwId","Motorcycle Id"
         ).add(
-                "Motorcycle Manufacturing", "Motorcycle Manufacturing"
+                "motorcycleName", "Motorcycle Name"
+        ).add(
+                "motorcycleManufacturing", "Motorcycle Manufacturing"
+        ).add(
+                "motorcycleYear", "Motorcycle Year"
         ).build();
     }
 

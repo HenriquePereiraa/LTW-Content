@@ -8,6 +8,10 @@
 	<portlet:param name="mvcRenderCommandName" value="/ltwContent/view-ltwcontent-detail" />
 </portlet:renderURL>
 
+<portlet:renderURL var="motorcycleViewURL">
+	<portlet:param name="mvcRenderCommandName" value="/ltwContent/motorcycle-view" />
+</portlet:renderURL>
+
 <section class="ltw-container">
 	<div class="ltw-left">
 		<h1 class="typing-animation">Life on Two Wheels Portal!</h1>
@@ -24,6 +28,14 @@
 		</aui:form>
 
 		<aui:form action="<%= viewLtwContentRequestURL %>" method="post" name="fm">
+			<div class="button-group">
+				<aui:button-row>
+					<aui:button type="submit" value="Motorcycles" />
+				</aui:button-row>
+			</div>
+		</aui:form>
+
+		<aui:form action="<%= motorcycleViewURL %>" method="post" name="fm">
 			<div class="button-group">
 				<aui:button-row>
 					<aui:button type="submit" value="View Motorcycles" />
