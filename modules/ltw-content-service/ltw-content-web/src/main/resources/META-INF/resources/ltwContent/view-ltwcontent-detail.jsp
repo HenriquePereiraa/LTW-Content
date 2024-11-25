@@ -48,8 +48,8 @@
         </liferay-ui:search-container-row>
 
         <liferay-ui:search-iterator
-        displayStyle="<%= String.valueOf(ltwContentDisplayContext.getDisplayStyle()) %>"
-        markupView="lexicon"
+            displayStyle="<%= String.valueOf(ltwContentDisplayContext.getDisplayStyle()) %>"
+            markupView="lexicon"
         />
     </liferay-ui:search-container>
 </clay:container-fluid>
