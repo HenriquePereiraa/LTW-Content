@@ -8,9 +8,16 @@
 
 %>
 
+<clay:container-fluid>
+
+    <liferay-ui:header
+        title="View Motorcycle"
+    />
+
 <frontend-data-set:classic-display
-        dataProviderKey="<%= MotorcycleFDSNames.Motocycle %>"
-        id="<%= MotorcycleFDSNames.Motocycle %>"
-        itemsPerPage="<%= 10 %>"
-        showSearch="<%= false %>"
+    dataProviderKey="<%= MotorcycleFDSNames.Motocycle %>"
+    id="<%= MotorcycleFDSNames.Motocycle %>"
+    itemsPerPage="<%= 10 %>"
 />
+
+</clay:container-fluid>
