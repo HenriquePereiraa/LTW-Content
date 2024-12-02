@@ -1,5 +1,8 @@
 package ltw.content.web.display.context;
 
+import com.liferay.frontend.data.set.model.FDSSortItemBuilder;
+import com.liferay.frontend.data.set.model.FDSSortItemList;
+import com.liferay.frontend.data.set.model.FDSSortItemListBuilder;
 import com.liferay.frontend.taglib.clay.servlet.taglib.util.DropdownItem;
 import com.liferay.frontend.taglib.clay.servlet.taglib.util.DropdownItemList;
 import com.liferay.petra.function.transform.TransformUtil;
@@ -40,6 +43,9 @@ public class LtwContentDisplayContext {
         _ltwContentLocalService = ltw_contentLocalService;
     }
 
+    public String getApiUrl() {
+        return "/o/ltw-content-rest/v1.0/ltw-content";
+    }
 
     public String getDisplayStyle() {
         if (_displayStyle == null) {
@@ -47,6 +53,17 @@ public class LtwContentDisplayContext {
         }
         return _displayStyle;
     }
+
+    public FDSSortItemList getFDSSortItemList() {
+        return FDSSortItemListBuilder.add(
+                FDSSortItemBuilder.setDirection(
+                        "asc"
+                ).setKey(
+                        "typeName"
+                ).build()
+        ).build();
+    }
+
 
     public String getOrderByCol() {
         if (_orderByCol == null) {
