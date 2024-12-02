@@ -3,9 +3,7 @@
 <%@ include file="/init.jsp" %>
 
 <%
-
     LtwContentDisplayContext ltwContentDisplayContext = (LtwContentDisplayContext) request.getAttribute("ltwContentDisplayContext");
-
 %>
 
 <clay:container-fluid>
