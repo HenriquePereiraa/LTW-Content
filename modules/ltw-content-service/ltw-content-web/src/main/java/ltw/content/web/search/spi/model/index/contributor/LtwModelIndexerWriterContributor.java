@@ -7,6 +7,10 @@ import com.liferay.portal.search.spi.model.index.contributor.helper.ModelIndexer
 import ltw.content.service.model.LTW_content;
 import ltw.content.service.service.LTW_contentLocalService;
 
+/**
+ * @author Henrique Pereira
+ * */
+
 public class LtwModelIndexerWriterContributor
         implements ModelIndexerWriterContributor<LTW_content> {
 
