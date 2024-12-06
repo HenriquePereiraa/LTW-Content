@@ -6,6 +6,10 @@ import com.liferay.portal.search.spi.model.index.contributor.ModelDocumentContri
 import ltw.content.service.model.LTW_content;
 import org.osgi.service.component.annotations.Component;
 
+/**
+ * @author Henrique Pereira
+ */
+
 @Component(
         properties = "indexer.class.name=ltw.content.service.model.LTW_content",
         service = ModelDocumentContributor.class
