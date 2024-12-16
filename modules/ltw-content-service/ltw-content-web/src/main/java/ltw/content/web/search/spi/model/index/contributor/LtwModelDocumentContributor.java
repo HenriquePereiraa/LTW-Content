@@ -11,7 +11,7 @@ import org.osgi.service.component.annotations.Component;
  */
 
 @Component(
-        properties = "indexer.class.name=ltw.content.service.model.LTW_content",
+        property = "indexer.class.name=ltw.content.service.model.LTW_content",
         service = ModelDocumentContributor.class
 )
 
